@@ -1,0 +1,997 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00527CF229597B190048939C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527CF129597B190048939C /* TaskRepository.swift */; };
+		00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */; };
+		00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D15295C33410048939C /* SubtaskDAOProtocol.swift */; };
+		00527D1A295C33900048939C /* SubtaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D19295C33900048939C /* SubtaskDAO.swift */; };
+		0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072C29577F1E0043E23A /* AppDelegate.swift */; };
+		0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072E29577F1E0043E23A /* SceneDelegate.swift */; };
+		0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063073029577F1E0043E23A /* TaskListViewController.swift */; };
+		0063073629577F1F0043E23A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0063073529577F1F0043E23A /* Assets.xcassets */; };
+		0063073929577F1F0043E23A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0063073729577F1F0043E23A /* LaunchScreen.storyboard */; };
+		0063074E29577F1F0043E23A /* cloudkit_clientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063074D29577F1F0043E23A /* cloudkit_clientUITests.swift */; };
+		0063075029577F1F0043E23A /* cloudkit_clientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063074F29577F1F0043E23A /* cloudkit_clientUITestsLaunchTests.swift */; };
+		00630765295783560043E23A /* CloudKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00630764295783560043E23A /* CloudKitClient.swift */; };
+		00630769295827A70043E23A /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00630768295827A70043E23A /* TaskRepositoryProtocol.swift */; };
+		0063077A295970A00043E23A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00630779295970A00043E23A /* Task.swift */; };
+		0063077C2959712A0043E23A /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063077B2959712A0043E23A /* Subtask.swift */; };
+		0063077F2959727F0043E23A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063077E2959727F0043E23A /* Constant.swift */; };
+		006307852959738D0043E23A /* CloudKitClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006307842959738D0043E23A /* CloudKitClientProtocol.swift */; };
+		009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB2D295C37A80053EE18 /* TaskDAO.swift */; };
+		009CEB32295CF3560053EE18 /* ListTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */; };
+		009CEB34295CF3900053EE18 /* AddTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */; };
+		009CEB36295CF44A0053EE18 /* UpdateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */; };
+		009CEB38295CF4C50053EE18 /* AddSubtaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */; };
+		009CEB3A295CF4EA0053EE18 /* DeleteTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */; };
+		009CEB3C295CFB350053EE18 /* ListTasksUseCaseOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */; };
+		009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3E295D15250053EE18 /* TaskListPresenter.swift */; };
+		009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB41295D153B0053EE18 /* TaskListPresenting.swift */; };
+		009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB45295D15960053EE18 /* TaskListViewProtocol.swift */; };
+		009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB4C295D2D500053EE18 /* TaskListFactory.swift */; };
+		009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */; };
+		009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */; };
+		009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */; };
+		009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */; };
+		009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */; };
+		009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */; };
+		009D1EB12960698D00E53CF0 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB02960698D00E53CF0 /* Testing.swift */; };
+		009D1EB52962608300E53CF0 /* TaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB42962608300E53CF0 /* TaskDAOMock.swift */; };
+		009D1EB72962608E00E53CF0 /* SubtaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */; };
+		009D1EBA2962782800E53CF0 /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB92962782800E53CF0 /* DatabaseError.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0063074029577F1F0043E23A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0063072129577F1E0043E23A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0063072829577F1E0043E23A;
+			remoteInfo = "cloudkit-client";
+		};
+		0063074A29577F1F0043E23A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0063072129577F1E0043E23A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0063072829577F1E0043E23A;
+			remoteInfo = "cloudkit-client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00527CF129597B190048939C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOProtocol.swift; sourceTree = "<group>"; };
+		00527D15295C33410048939C /* SubtaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOProtocol.swift; sourceTree = "<group>"; };
+		00527D19295C33900048939C /* SubtaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAO.swift; sourceTree = "<group>"; };
+		0063072929577F1E0043E23A /* cloudkit-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cloudkit-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0063072C29577F1E0043E23A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0063072E29577F1E0043E23A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0063073029577F1E0043E23A /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		0063073529577F1F0043E23A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0063073829577F1F0043E23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0063073A29577F1F0043E23A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0063073F29577F1F0043E23A /* cloudkit-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cloudkit-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0063074929577F1F0043E23A /* cloudkit-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cloudkit-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0063074D29577F1F0043E23A /* cloudkit_clientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cloudkit_clientUITests.swift; sourceTree = "<group>"; };
+		0063074F29577F1F0043E23A /* cloudkit_clientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cloudkit_clientUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		00630764295783560043E23A /* CloudKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitClient.swift; sourceTree = "<group>"; };
+		00630766295784780043E23A /* cloudkit-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "cloudkit-client.entitlements"; sourceTree = "<group>"; };
+		00630768295827A70043E23A /* TaskRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryProtocol.swift; sourceTree = "<group>"; };
+		00630779295970A00043E23A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		0063077B2959712A0043E23A /* Subtask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
+		0063077E2959727F0043E23A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		006307842959738D0043E23A /* CloudKitClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitClientProtocol.swift; sourceTree = "<group>"; };
+		009CEB2D295C37A80053EE18 /* TaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAO.swift; sourceTree = "<group>"; };
+		009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCase.swift; sourceTree = "<group>"; };
+		009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskUseCase.swift; sourceTree = "<group>"; };
+		009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskUseCase.swift; sourceTree = "<group>"; };
+		009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubtaskUseCase.swift; sourceTree = "<group>"; };
+		009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskUseCase.swift; sourceTree = "<group>"; };
+		009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseOutput.swift; sourceTree = "<group>"; };
+		009CEB3E295D15250053EE18 /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
+		009CEB41295D153B0053EE18 /* TaskListPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenting.swift; sourceTree = "<group>"; };
+		009CEB45295D15960053EE18 /* TaskListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewProtocol.swift; sourceTree = "<group>"; };
+		009CEB4C295D2D500053EE18 /* TaskListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListFactory.swift; sourceTree = "<group>"; };
+		009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListSwiftUi.swift; sourceTree = "<group>"; };
+		009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOTest.swift; sourceTree = "<group>"; };
+		009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseMock.swift; sourceTree = "<group>"; };
+		009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOTest.swift; sourceTree = "<group>"; };
+		009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDatabaseProtocol.swift; sourceTree = "<group>"; };
+		009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTest.swift; sourceTree = "<group>"; };
+		009D1EB02960698D00E53CF0 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		009D1EB42962608300E53CF0 /* TaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOMock.swift; sourceTree = "<group>"; };
+		009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOMock.swift; sourceTree = "<group>"; };
+		009D1EB92962782800E53CF0 /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0063072629577F1E0043E23A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063073C29577F1F0043E23A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063074629577F1F0043E23A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00527CF02959798A0048939C /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				00527D08295A59470048939C /* CloudKit */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		00527D08295A59470048939C /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				006307842959738D0043E23A /* CloudKitClientProtocol.swift */,
+				00630764295783560043E23A /* CloudKitClient.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		00527D0E295C2F770048939C /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				00527D14295C32C70048939C /* Subtask */,
+				00527D0F295C2F8F0048939C /* Task */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		00527D0F295C2F8F0048939C /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */,
+				009CEB2D295C37A80053EE18 /* TaskDAO.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		00527D14295C32C70048939C /* Subtask */ = {
+			isa = PBXGroup;
+			children = (
+				00527D15295C33410048939C /* SubtaskDAOProtocol.swift */,
+				00527D19295C33900048939C /* SubtaskDAO.swift */,
+			);
+			path = Subtask;
+			sourceTree = "<group>";
+		};
+		0063072029577F1E0043E23A = {
+			isa = PBXGroup;
+			children = (
+				0063072B29577F1E0043E23A /* cloudkit-client */,
+				0063074229577F1F0043E23A /* cloudkit-clientTests */,
+				0063074C29577F1F0043E23A /* cloudkit-clientUITests */,
+				0063072A29577F1E0043E23A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0063072A29577F1E0043E23A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0063072929577F1E0043E23A /* cloudkit-client.app */,
+				0063073F29577F1F0043E23A /* cloudkit-clientTests.xctest */,
+				0063074929577F1F0043E23A /* cloudkit-clientUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0063072B29577F1E0043E23A /* cloudkit-client */ = {
+			isa = PBXGroup;
+			children = (
+				00630766295784780043E23A /* cloudkit-client.entitlements */,
+				0063075E29577F5B0043E23A /* Source */,
+				0063075D29577F4B0043E23A /* Resource */,
+				0063075C29577F450043E23A /* Application */,
+				0063073A29577F1F0043E23A /* Info.plist */,
+			);
+			path = "cloudkit-client";
+			sourceTree = "<group>";
+		};
+		0063074229577F1F0043E23A /* cloudkit-clientTests */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EAF2960697D00E53CF0 /* Protocol */,
+				009CEB51295E7DEC0053EE18 /* Data */,
+			);
+			path = "cloudkit-clientTests";
+			sourceTree = "<group>";
+		};
+		0063074C29577F1F0043E23A /* cloudkit-clientUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0063074D29577F1F0043E23A /* cloudkit_clientUITests.swift */,
+				0063074F29577F1F0043E23A /* cloudkit_clientUITestsLaunchTests.swift */,
+			);
+			path = "cloudkit-clientUITests";
+			sourceTree = "<group>";
+		};
+		0063075C29577F450043E23A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0063072C29577F1E0043E23A /* AppDelegate.swift */,
+				0063072E29577F1E0043E23A /* SceneDelegate.swift */,
+				0063073729577F1F0043E23A /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		0063075D29577F4B0043E23A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0063073529577F1F0043E23A /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0063075E29577F5B0043E23A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				00630767295827950043E23A /* Protocol */,
+				009CEB4A295D2D110053EE18 /* Main */,
+				0063076E29596ECE0043E23A /* Data */,
+				0063076D29596E630043E23A /* Domain */,
+				0063076C29596E590043E23A /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0063075F2957831A0043E23A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0063073029577F1E0043E23A /* TaskListViewController.swift */,
+				009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		00630767295827950043E23A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				00630768295827A70043E23A /* TaskRepositoryProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0063076C29596E590043E23A /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB44295D15780053EE18 /* Protocol */,
+				009CEB3D295D150F0053EE18 /* Presenter */,
+				0063075F2957831A0043E23A /* UI */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0063076D29596E630043E23A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0063077229596F910043E23A /* Protocol */,
+				0063077429596FB50043E23A /* UseCase */,
+				0063077329596F980043E23A /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0063076E29596ECE0043E23A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB82962781C00E53CF0 /* Error */,
+				009D1EA8296064CE00E53CF0 /* Protocol */,
+				00527D0E295C2F770048939C /* DAO */,
+				00527CF02959798A0048939C /* Client */,
+				00630780295972E60043E23A /* Repository */,
+				0063077E2959727F0043E23A /* Constant.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0063077229596F910043E23A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0063077329596F980043E23A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				00630779295970A00043E23A /* Task.swift */,
+				0063077B2959712A0043E23A /* Subtask.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		0063077429596FB50043E23A /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */,
+				009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */,
+				009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */,
+				009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */,
+				009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		00630780295972E60043E23A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				00527CF129597B190048939C /* TaskRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		009CEB3D295D150F0053EE18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB40295D152B0053EE18 /* TaskListPresenter */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		009CEB40295D152B0053EE18 /* TaskListPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB3E295D15250053EE18 /* TaskListPresenter.swift */,
+				009CEB41295D153B0053EE18 /* TaskListPresenting.swift */,
+			);
+			path = TaskListPresenter;
+			sourceTree = "<group>";
+		};
+		009CEB44295D15780053EE18 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB45295D15960053EE18 /* TaskListViewProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		009CEB4A295D2D110053EE18 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB4B295D2D450053EE18 /* Factory */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		009CEB4B295D2D450053EE18 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				009CEB4C295D2D500053EE18 /* TaskListFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		009CEB51295E7DEC0053EE18 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EAC2960683700E53CF0 /* Repository */,
+				009CEB52295E7E0F0053EE18 /* DAO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		009CEB52295E7E0F0053EE18 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				009D1E98295E85D700E53CF0 /* Doubles */,
+				009D1E9D295E934400E53CF0 /* Subtask */,
+				009CEB53295E7E1B0053EE18 /* Task */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		009CEB53295E7E1B0053EE18 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		009D1E98295E85D700E53CF0 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		009D1E9D295E934400E53CF0 /* Subtask */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */,
+			);
+			path = Subtask;
+			sourceTree = "<group>";
+		};
+		009D1EA8296064CE00E53CF0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		009D1EAC2960683700E53CF0 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB22962606500E53CF0 /* TaskRepository */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		009D1EAF2960697D00E53CF0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB02960698D00E53CF0 /* Testing.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		009D1EB22962606500E53CF0 /* TaskRepository */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB32962607100E53CF0 /* Doubles */,
+				009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */,
+			);
+			path = TaskRepository;
+			sourceTree = "<group>";
+		};
+		009D1EB32962607100E53CF0 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB42962608300E53CF0 /* TaskDAOMock.swift */,
+				009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		009D1EB82962781C00E53CF0 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EB92962782800E53CF0 /* DatabaseError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0063072829577F1E0043E23A /* cloudkit-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0063075329577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-client" */;
+			buildPhases = (
+				0063072529577F1E0043E23A /* Sources */,
+				0063072629577F1E0043E23A /* Frameworks */,
+				0063072729577F1E0043E23A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "cloudkit-client";
+			productName = "cloudkit-client";
+			productReference = 0063072929577F1E0043E23A /* cloudkit-client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0063073E29577F1F0043E23A /* cloudkit-clientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0063075629577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-clientTests" */;
+			buildPhases = (
+				0063073B29577F1F0043E23A /* Sources */,
+				0063073C29577F1F0043E23A /* Frameworks */,
+				0063073D29577F1F0043E23A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0063074129577F1F0043E23A /* PBXTargetDependency */,
+			);
+			name = "cloudkit-clientTests";
+			productName = "cloudkit-clientTests";
+			productReference = 0063073F29577F1F0043E23A /* cloudkit-clientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0063074829577F1F0043E23A /* cloudkit-clientUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0063075929577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-clientUITests" */;
+			buildPhases = (
+				0063074529577F1F0043E23A /* Sources */,
+				0063074629577F1F0043E23A /* Frameworks */,
+				0063074729577F1F0043E23A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0063074B29577F1F0043E23A /* PBXTargetDependency */,
+			);
+			name = "cloudkit-clientUITests";
+			productName = "cloudkit-clientUITests";
+			productReference = 0063074929577F1F0043E23A /* cloudkit-clientUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0063072129577F1E0043E23A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					0063072829577F1E0043E23A = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					0063073E29577F1F0043E23A = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+						TestTargetID = 0063072829577F1E0043E23A;
+					};
+					0063074829577F1F0043E23A = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 0063072829577F1E0043E23A;
+					};
+				};
+			};
+			buildConfigurationList = 0063072429577F1E0043E23A /* Build configuration list for PBXProject "cloudkit-client" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0063072029577F1E0043E23A;
+			productRefGroup = 0063072A29577F1E0043E23A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0063072829577F1E0043E23A /* cloudkit-client */,
+				0063073E29577F1F0043E23A /* cloudkit-clientTests */,
+				0063074829577F1F0043E23A /* cloudkit-clientUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0063072729577F1E0043E23A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0063073929577F1F0043E23A /* LaunchScreen.storyboard in Resources */,
+				0063073629577F1F0043E23A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063073D29577F1F0043E23A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063074729577F1F0043E23A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0063072529577F1E0043E23A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */,
+				009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */,
+				009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */,
+				0063077A295970A00043E23A /* Task.swift in Sources */,
+				0063077C2959712A0043E23A /* Subtask.swift in Sources */,
+				009D1EBA2962782800E53CF0 /* DatabaseError.swift in Sources */,
+				0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */,
+				0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */,
+				009CEB32295CF3560053EE18 /* ListTasksUseCase.swift in Sources */,
+				009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */,
+				009CEB3A295CF4EA0053EE18 /* DeleteTaskUseCase.swift in Sources */,
+				00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */,
+				0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */,
+				00630765295783560043E23A /* CloudKitClient.swift in Sources */,
+				0063077F2959727F0043E23A /* Constant.swift in Sources */,
+				009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */,
+				009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */,
+				009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */,
+				00527D1A295C33900048939C /* SubtaskDAO.swift in Sources */,
+				00527CF229597B190048939C /* TaskRepository.swift in Sources */,
+				009CEB34295CF3900053EE18 /* AddTaskUseCase.swift in Sources */,
+				009CEB38295CF4C50053EE18 /* AddSubtaskUseCase.swift in Sources */,
+				009CEB3C295CFB350053EE18 /* ListTasksUseCaseOutput.swift in Sources */,
+				006307852959738D0043E23A /* CloudKitClientProtocol.swift in Sources */,
+				009CEB36295CF44A0053EE18 /* UpdateTaskUseCase.swift in Sources */,
+				00630769295827A70043E23A /* TaskRepositoryProtocol.swift in Sources */,
+				009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063073B29577F1F0043E23A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseMock.swift in Sources */,
+				009D1EB72962608E00E53CF0 /* SubtaskDAOMock.swift in Sources */,
+				009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */,
+				009D1EB12960698D00E53CF0 /* Testing.swift in Sources */,
+				009D1EB52962608300E53CF0 /* TaskDAOMock.swift in Sources */,
+				009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */,
+				009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0063074529577F1F0043E23A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0063075029577F1F0043E23A /* cloudkit_clientUITestsLaunchTests.swift in Sources */,
+				0063074E29577F1F0043E23A /* cloudkit_clientUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0063074129577F1F0043E23A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0063072829577F1E0043E23A /* cloudkit-client */;
+			targetProxy = 0063074029577F1F0043E23A /* PBXContainerItemProxy */;
+		};
+		0063074B29577F1F0043E23A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0063072829577F1E0043E23A /* cloudkit-client */;
+			targetProxy = 0063074A29577F1F0043E23A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0063073729577F1F0043E23A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0063073829577F1F0043E23A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0063075129577F1F0043E23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0063075229577F1F0043E23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0063075429577F1F0043E23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "cloudkit-client/cloudkit-client.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "cloudkit-client/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0063075529577F1F0043E23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "cloudkit-client/cloudkit-client.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "cloudkit-client/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0063075729577F1F0043E23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cloudkit-client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/cloudkit-client";
+			};
+			name = Debug;
+		};
+		0063075829577F1F0043E23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cloudkit-client.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/cloudkit-client";
+			};
+			name = Release;
+		};
+		0063075A29577F1F0043E23A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-clientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "cloudkit-client";
+			};
+			name = Debug;
+		};
+		0063075B29577F1F0043E23A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685GVH2XJC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thiagohba.com.cloudkit-clientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "cloudkit-client";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0063072429577F1E0043E23A /* Build configuration list for PBXProject "cloudkit-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0063075129577F1F0043E23A /* Debug */,
+				0063075229577F1F0043E23A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0063075329577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0063075429577F1F0043E23A /* Debug */,
+				0063075529577F1F0043E23A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0063075629577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-clientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0063075729577F1F0043E23A /* Debug */,
+				0063075829577F1F0043E23A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0063075929577F1F0043E23A /* Build configuration list for PBXNativeTarget "cloudkit-clientUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0063075A29577F1F0043E23A /* Debug */,
+				0063075B29577F1F0043E23A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0063072129577F1E0043E23A /* Project object */;
+}
