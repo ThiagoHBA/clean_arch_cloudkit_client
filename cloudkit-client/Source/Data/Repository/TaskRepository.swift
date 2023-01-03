@@ -11,16 +11,20 @@ import CloudKit
 class TaskRepository: TaskRepositoryProtocol {
     let taskDAO: TaskDAOProtocol
     let subtaskDAO: SubtaskDAOProtocol
+    let errorHandler: DataSourceErrorHandler
 
-    init(taskDAO: TaskDAOProtocol, subtaskDAO: SubtaskDAOProtocol) {
+    init(taskDAO: TaskDAOProtocol, subtaskDAO: SubtaskDAOProtocol, errorHandler: DataSourceErrorHandler) {
         self.taskDAO = taskDAO
         self.subtaskDAO = subtaskDAO
+        self.errorHandler = errorHandler
     }
     
     func fetchAllTasks(completion: @escaping (Result<[Task], Error>) -> Void) {
         var taskList: [Task] = [Task]()
         
         taskDAO.fetchAll { [weak self] result in
+            guard let strongSelf = self else { return }
+            
             switch result {
                 case .success(let records):
                     if records.isEmpty { completion(.success([])) }
@@ -31,16 +35,15 @@ class TaskRepository: TaskRepositoryProtocol {
                             subtasks: []
                         )
                         
-                        self?.fetchReferenceSubtask(from: record, to: mappedTask, completion: { subtasks in
+                        strongSelf.fetchReferenceSubtask(from: record, to: mappedTask, completion: { subtasks in
                             mappedTask.subtasks = subtasks
                         })
                         
                         taskList.append(mappedTask)
                     }
-                
                     completion(.success(taskList))
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion(.failure(strongSelf.errorHandler.handleError(error)))
             }
         }
                                
@@ -59,7 +62,6 @@ class TaskRepository: TaskRepositoryProtocol {
                             name: record["name"] as! String,
                             task: task
                         )
-                    
                         subtasks.append(subtask)
                         break
                     case .failure(_):

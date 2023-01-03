@@ -88,6 +88,52 @@ final class TaskRepositoryTest: XCTestCase {
             }
         }
     }
+    
+    func test_fetchAllTasks_when_error_should_handle_correctly() {
+        let (sut, (taskSpy, _)) = makeSUT()
+        let networkFailureCode = CKError.Code(rawValue: 4)!
+        let networkFailureDescription = "Não foi possível concluir a operação devido uma falha na comunicação da internet! Verifique sua conexão e tente novamente"
+        let error = CKError(networkFailureCode)
+        
+        taskSpy.fetchAllData = { .failure( error ) }
+        
+        sut.fetchAllTasks { result in
+            switch result {
+            case .success(_):
+                XCTFail("fetchAllTasks complete operation successfully while should fail")
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription,  networkFailureDescription)
+            }
+        }
+    }
+    
+    func test_fetchAllTasks_when_error_should_no_call_fetch_subtasks() {
+        let (sut, (taskSpy, subtaskSpy)) = makeSUT()
+        let networkFailureCode = CKError.Code(rawValue: 4)!
+        let error = CKError(networkFailureCode)
+        taskSpy.fetchAllData = { .failure( error ) }
+        sut.fetchAllTasks { _ in }
+        
+        XCTAssertEqual(subtaskSpy.fetchSubtaskCalled, 0)
+    }
+    
+    func test_fetchAllTasks_when_fail_should_map_correctly_unkwown_errors() {
+        let (sut, (taskSpy, _)) = makeSUT()
+        let unknownErrorFailureCode = CKError.Code(rawValue: 0)! //
+        let unknownErrorExpectedDescription = "Erro não mapeado! Verifique se existe alguma atualização do aplicativo disponível e tente novamente."
+        let error = CKError(unknownErrorFailureCode)
+        
+        taskSpy.fetchAllData = { .failure( error ) }
+        
+        sut.fetchAllTasks { result in
+            switch result {
+            case .success(_):
+                XCTFail("fetchAllTasks complete operation successfully while should fail")
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription,  unknownErrorExpectedDescription)
+            }
+        }
+    }
 
 }
 
@@ -100,7 +146,8 @@ extension TaskRepositoryTest: Testing {
         
         let sut = TaskRepository(
             taskDAO: taskDAOSpy,
-            subtaskDAO: subtaskDAOSpy
+            subtaskDAO: subtaskDAOSpy,
+            errorHandler: CloudKitErrorHandler()
         )
         
         return (sut, (taskDAOSpy, subtaskDAOSpy))

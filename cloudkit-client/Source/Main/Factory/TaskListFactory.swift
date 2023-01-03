@@ -14,7 +14,8 @@ struct TaskListViewControllerFactory {
     static func make() -> UIViewController {
         let taskRepository = TaskRepository(
             taskDAO: TaskDAO(client: CloudKitClient()),
-            subtaskDAO: SubtaskDAO(client: CloudKitClient())
+            subtaskDAO: SubtaskDAO(client: CloudKitClient()),
+            errorHandler: CloudKitErrorHandler()
         )
         
         let listTaskUseCase = ListTasksUseCase(repository: taskRepository)
@@ -30,7 +31,8 @@ struct TaskListViewControllerFactory {
     static func makeSwiftUI() -> UIViewController {
         let taskRepository = TaskRepository(
             taskDAO: TaskDAO(client: CloudKitClient()),
-            subtaskDAO: SubtaskDAO(client: CloudKitClient())
+            subtaskDAO: SubtaskDAO(client: CloudKitClient()),
+            errorHandler: CloudKitErrorHandler()
         )
         
         let listTaskUseCase = ListTasksUseCase(repository: taskRepository)

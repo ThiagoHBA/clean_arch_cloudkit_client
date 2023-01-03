@@ -18,23 +18,24 @@ class CloudKitClient: CloudKitClientProtocol {
     func fetchData(query: CKQuery, completion: @escaping (Result<[CKRecord], Error>) -> Void) {
         var ckRecords: [CKRecord] = [CKRecord]()
         
-        database.fetch(withQuery: query,
-                       inZoneWith: nil, desiredKeys: nil,
-                       resultsLimit: CKQueryOperation.maximumResults
+        database.fetch(
+            withQuery: query,
+            inZoneWith: nil, desiredKeys: nil,
+           resultsLimit: CKQueryOperation.maximumResults
         ) { result in
             switch result {
-            case .success(let (matchResults, _ )):
-                matchResults.forEach { _ , result in
-                    switch result {
-                        case .success(let record):
-                            ckRecords.append(record)
-                        case .failure(let error):
-                            completion(.failure(error)) // how to deal?
+                case .success(let (matchResults, _ )):
+                    matchResults.forEach { _ , result in
+                        switch result {
+                            case .success(let record):
+                                ckRecords.append(record)
+                            case .failure(let error):
+                                completion(.failure(error)) // how to deal?
+                        }
                     }
-                }
-                completion(.success(ckRecords))
-            case .failure(let error):
-                completion(.failure(error))
+                    completion(.success(ckRecords))
+                case .failure(let error):
+                    completion(.failure(error))
             }
         }
     }

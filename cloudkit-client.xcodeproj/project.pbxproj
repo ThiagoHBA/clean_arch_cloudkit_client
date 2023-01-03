@@ -44,7 +44,9 @@
 		009D1EB12960698D00E53CF0 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB02960698D00E53CF0 /* Testing.swift */; };
 		009D1EB52962608300E53CF0 /* TaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB42962608300E53CF0 /* TaskDAOMock.swift */; };
 		009D1EB72962608E00E53CF0 /* SubtaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */; };
-		009D1EBA2962782800E53CF0 /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB92962782800E53CF0 /* DatabaseError.swift */; };
+		009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */; };
+		009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */; };
+		009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC52963B32600E53CF0 /* ErrorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +109,9 @@
 		009D1EB02960698D00E53CF0 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		009D1EB42962608300E53CF0 /* TaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOMock.swift; sourceTree = "<group>"; };
 		009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOMock.swift; sourceTree = "<group>"; };
-		009D1EB92962782800E53CF0 /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceErrorHandler.swift; sourceTree = "<group>"; };
+		009D1EC52963B32600E53CF0 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,18 +142,10 @@
 		00527CF02959798A0048939C /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				00527D08295A59470048939C /* CloudKit */,
-			);
-			path = Client;
-			sourceTree = "<group>";
-		};
-		00527D08295A59470048939C /* CloudKit */ = {
-			isa = PBXGroup;
-			children = (
 				006307842959738D0043E23A /* CloudKitClientProtocol.swift */,
 				00630764295783560043E23A /* CloudKitClient.swift */,
 			);
-			path = CloudKit;
+			path = Client;
 			sourceTree = "<group>";
 		};
 		00527D0E295C2F770048939C /* DAO */ = {
@@ -250,6 +246,7 @@
 		0063075E29577F5B0043E23A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				009D1EC32963B2F800E53CF0 /* Common */,
 				00630767295827950043E23A /* Protocol */,
 				009CEB4A295D2D110053EE18 /* Main */,
 				0063076E29596ECE0043E23A /* Data */,
@@ -299,10 +296,8 @@
 		0063076E29596ECE0043E23A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EB82962781C00E53CF0 /* Error */,
-				009D1EA8296064CE00E53CF0 /* Protocol */,
+				009D1EBB2963925D00E53CF0 /* DataSource */,
 				00527D0E295C2F770048939C /* DAO */,
-				00527CF02959798A0048939C /* Client */,
 				00630780295972E60043E23A /* Repository */,
 				0063077E2959727F0043E23A /* Constant.swift */,
 			);
@@ -430,14 +425,6 @@
 			path = Subtask;
 			sourceTree = "<group>";
 		};
-		009D1EA8296064CE00E53CF0 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		009D1EAC2960683700E53CF0 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,12 +459,55 @@
 			path = Doubles;
 			sourceTree = "<group>";
 		};
-		009D1EB82962781C00E53CF0 /* Error */ = {
+		009D1EBB2963925D00E53CF0 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EB92962782800E53CF0 /* DatabaseError.swift */,
+				009D1EC0296392C500E53CF0 /* Protocol */,
+				009D1EBC2963926D00E53CF0 /* CloudKit */,
 			);
-			path = Error;
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		009D1EBC2963926D00E53CF0 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EC72963B3A600E53CF0 /* Protocol */,
+				00527CF02959798A0048939C /* Client */,
+				009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		009D1EC0296392C500E53CF0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		009D1EC32963B2F800E53CF0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EC42963B31B00E53CF0 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		009D1EC42963B31B00E53CF0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EC52963B32600E53CF0 /* ErrorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		009D1EC72963B3A600E53CF0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,16 +641,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */,
 				00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */,
 				009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */,
 				009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */,
 				0063077A295970A00043E23A /* Task.swift in Sources */,
 				0063077C2959712A0043E23A /* Subtask.swift in Sources */,
-				009D1EBA2962782800E53CF0 /* DatabaseError.swift in Sources */,
 				0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */,
+				009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */,
 				0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */,
 				009CEB32295CF3560053EE18 /* ListTasksUseCase.swift in Sources */,
 				009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */,
+				009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */,
 				009CEB3A295CF4EA0053EE18 /* DeleteTaskUseCase.swift in Sources */,
 				00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */,
 				0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */,
