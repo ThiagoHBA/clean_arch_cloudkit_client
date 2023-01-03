@@ -11,6 +11,6 @@ import CloudKit
 protocol CloudKitClientProtocol {
     var database: CKDatabaseProtocol { get set }
     
-    func fetchData(query: CKQuery, completion: @escaping (Result<[CKRecord], Error>) -> Void)
+    func fetchData(query: CKQuery, completion: @escaping (Result<[(CKRecord.ID, Result<CKRecord, Error>)], Error>) -> Void)
     func fetchPerId(_ id: CKRecord.ID, completion: @escaping (Result<CKRecord, Error>) -> Void)
 }

@@ -15,25 +15,16 @@ class CloudKitClient: CloudKitClientProtocol {
         self.database = database
     }
     
-    func fetchData(query: CKQuery, completion: @escaping (Result<[CKRecord], Error>) -> Void) {
-        var ckRecords: [CKRecord] = [CKRecord]()
-        
+    func fetchData(query: CKQuery, completion: @escaping (Result<[(CKRecord.ID, Result<CKRecord, Error>)], Error>) -> Void) {
         database.fetch(
             withQuery: query,
-            inZoneWith: nil, desiredKeys: nil,
-           resultsLimit: CKQueryOperation.maximumResults
+            inZoneWith: nil,
+            desiredKeys: nil,
+            resultsLimit: CKQueryOperation.maximumResults
         ) { result in
             switch result {
                 case .success(let (matchResults, _ )):
-                    matchResults.forEach { _ , result in
-                        switch result {
-                            case .success(let record):
-                                ckRecords.append(record)
-                            case .failure(let error):
-                                completion(.failure(error)) // how to deal?
-                        }
-                    }
-                    completion(.success(ckRecords))
+                    completion(.success(matchResults))
                 case .failure(let error):
                     completion(.failure(error))
             }

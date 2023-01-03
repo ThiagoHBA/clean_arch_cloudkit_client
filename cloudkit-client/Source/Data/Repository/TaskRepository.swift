@@ -35,9 +35,13 @@ class TaskRepository: TaskRepositoryProtocol {
                             subtasks: []
                         )
                         
-                        strongSelf.fetchReferenceSubtask(from: record, to: mappedTask, completion: { subtasks in
-                            mappedTask.subtasks = subtasks
-                        })
+                        strongSelf.fetchReferenceSubtask(
+                            from: record,
+                            to: mappedTask,
+                            completion: { subtasks, failureSubtasks in
+                                mappedTask.subtasks = subtasks
+                            }
+                        )
                         
                         taskList.append(mappedTask)
                     }
@@ -49,8 +53,13 @@ class TaskRepository: TaskRepositoryProtocol {
                                
     }
 
-    private func fetchReferenceSubtask(from record: CKRecord, to task: Task, completion: @escaping ([Subtask]) -> Void) {
+    private func fetchReferenceSubtask(
+        from record: CKRecord,
+        to task: Task,
+        completion: @escaping ([Subtask], [(CKRecord.ID, Error)]) -> Void
+    ) {
         var subtasks: [Subtask] = [Subtask]()
+        var failureSubtasks: [(CKRecord.ID, Error)] = [(CKRecord.ID, Error)]()
         let references = record["subtasks"] as! [CKRecord.Reference]
         
         references.forEach { reference in
@@ -63,12 +72,11 @@ class TaskRepository: TaskRepositoryProtocol {
                             task: task
                         )
                         subtasks.append(subtask)
-                        break
-                    case .failure(_):
-                        break // how to deal?
+                    case .failure(let error):
+                        failureSubtasks.append((record.recordID, error))
                 }
             }
         }
-        completion(subtasks)
+        completion(subtasks, failureSubtasks)
     }
 }
