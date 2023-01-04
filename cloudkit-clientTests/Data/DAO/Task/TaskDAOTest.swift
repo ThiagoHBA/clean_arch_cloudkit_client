@@ -40,7 +40,7 @@ final class TaskDAOTest: XCTestCase {
 }
 
 extension TaskDAOTest {
-    func successfullyCompleteQuery(_ database: CloudKitDatabaseMock) {
+    func successfullyCompleteQuery(_ database: CloudKitDatabaseSpy) {
         XCTAssertNoThrow(
             try database.completeFetchWithQuery(
                 result: .success(
@@ -55,9 +55,9 @@ extension TaskDAOTest {
 }
 
 extension TaskDAOTest: Testing {
-    typealias sutAndDoubles = (TaskDAO, (CloudKitDatabaseMock, CloudKitClient))
+    typealias sutAndDoubles = (TaskDAO, (CloudKitDatabaseSpy, CloudKitClient))
     func makeSUT() -> sutAndDoubles {
-        let databaseMock = CloudKitDatabaseMock()
+        let databaseMock = CloudKitDatabaseSpy()
         let client = CloudKitClient(database: databaseMock)
         let sut = TaskDAO(client: client)
 

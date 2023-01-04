@@ -37,13 +37,13 @@
 		009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB4C295D2D500053EE18 /* TaskListFactory.swift */; };
 		009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */; };
 		009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */; };
-		009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */; };
+		009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E99295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift */; };
 		009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */; };
 		009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */; };
 		009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */; };
 		009D1EB12960698D00E53CF0 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB02960698D00E53CF0 /* Testing.swift */; };
-		009D1EB52962608300E53CF0 /* TaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB42962608300E53CF0 /* TaskDAOMock.swift */; };
-		009D1EB72962608E00E53CF0 /* SubtaskDAOMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */; };
+		009D1EB52962608300E53CF0 /* TaskDAOSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */; };
+		009D1EB72962608E00E53CF0 /* SubtaskDAOSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */; };
 		009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */; };
 		009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */; };
 		009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC52963B32600E53CF0 /* ErrorExtension.swift */; };
@@ -102,13 +102,13 @@
 		009CEB4C295D2D500053EE18 /* TaskListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListFactory.swift; sourceTree = "<group>"; };
 		009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListSwiftUi.swift; sourceTree = "<group>"; };
 		009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOTest.swift; sourceTree = "<group>"; };
-		009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseMock.swift; sourceTree = "<group>"; };
+		009D1E99295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseSpy.swift; sourceTree = "<group>"; };
 		009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOTest.swift; sourceTree = "<group>"; };
 		009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDatabaseProtocol.swift; sourceTree = "<group>"; };
 		009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTest.swift; sourceTree = "<group>"; };
 		009D1EB02960698D00E53CF0 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
-		009D1EB42962608300E53CF0 /* TaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOMock.swift; sourceTree = "<group>"; };
-		009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOMock.swift; sourceTree = "<group>"; };
+		009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOSpy.swift; sourceTree = "<group>"; };
+		009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOSpy.swift; sourceTree = "<group>"; };
 		009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC52963B32600E53CF0 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 		009D1E98295E85D700E53CF0 /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				009D1E99295E85EA00E53CF0 /* CloudKitDatabaseMock.swift */,
+				009D1E99295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -453,8 +453,8 @@
 		009D1EB32962607100E53CF0 /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EB42962608300E53CF0 /* TaskDAOMock.swift */,
-				009D1EB62962608E00E53CF0 /* SubtaskDAOMock.swift */,
+				009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */,
+				009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -677,11 +677,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseMock.swift in Sources */,
-				009D1EB72962608E00E53CF0 /* SubtaskDAOMock.swift in Sources */,
+				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */,
+				009D1EB72962608E00E53CF0 /* SubtaskDAOSpy.swift in Sources */,
 				009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */,
 				009D1EB12960698D00E53CF0 /* Testing.swift in Sources */,
-				009D1EB52962608300E53CF0 /* TaskDAOMock.swift in Sources */,
+				009D1EB52962608300E53CF0 /* TaskDAOSpy.swift in Sources */,
 				009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */,
 				009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */,
 			);

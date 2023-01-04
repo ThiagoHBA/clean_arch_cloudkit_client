@@ -139,10 +139,10 @@ final class TaskRepositoryTest: XCTestCase {
 
 
 extension TaskRepositoryTest: Testing {
-    typealias SutAndDoubles = (TaskRepository, (TaskDAOMock, SubtaskDAOMock))
+    typealias SutAndDoubles = (TaskRepository, (TaskDAOSpy, SubtaskDAOSpy))
     func makeSUT() -> SutAndDoubles {
-        let taskDAOSpy = TaskDAOMock()
-        let subtaskDAOSpy = SubtaskDAOMock()
+        let taskDAOSpy = TaskDAOSpy()
+        let subtaskDAOSpy = SubtaskDAOSpy()
         
         let sut = TaskRepository(
             taskDAO: taskDAOSpy,

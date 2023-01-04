@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 @testable import cloudkit_client
 
-class TaskDAOMock: TaskDAOProtocol {
+class TaskDAOSpy: TaskDAOProtocol {
     var fetchAllData: (() -> (Result<[CKRecord], Error>))?
     private(set) var fetchAllCalled = 0
     

@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 @testable import cloudkit_client
 
-class CloudKitDatabaseMock: CKDatabaseProtocol {
+class CloudKitDatabaseSpy: CKDatabaseProtocol {
     private(set) var fetchWithQueryCalled = 0
     private(set) var fetchWithRecordIdCalled = 0
     private(set) var fetchWithQueryCompletion: (

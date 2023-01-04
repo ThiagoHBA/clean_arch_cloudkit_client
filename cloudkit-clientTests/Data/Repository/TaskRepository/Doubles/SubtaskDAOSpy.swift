@@ -9,7 +9,7 @@ import Foundation
 import CloudKit
 @testable import cloudkit_client
 
-class SubtaskDAOMock: SubtaskDAOProtocol {
+class SubtaskDAOSpy: SubtaskDAOProtocol {
     var fetchSubtaskData: (() -> (Result<CKRecord, Error>))?
     private(set) var fetchSubtaskCalled = 0
     

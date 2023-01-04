@@ -40,7 +40,7 @@ final class SubtaskDAOTest: XCTestCase {
 }
 
 extension SubtaskDAOTest {
-    func successfullyCompleteQuery(_ database: CloudKitDatabaseMock) {
+    func successfullyCompleteQuery(_ database: CloudKitDatabaseSpy) {
         XCTAssertNoThrow(try database.completeFetchWithId(
             record: CKRecord(recordType: "SubtaskItem"),
             error: nil
@@ -49,9 +49,9 @@ extension SubtaskDAOTest {
 }
 
 extension SubtaskDAOTest: Testing {
-    typealias sutAndDoubles = (SubtaskDAO, (CloudKitDatabaseMock, CloudKitClient))
+    typealias sutAndDoubles = (SubtaskDAO, (CloudKitDatabaseSpy, CloudKitClient))
     func makeSUT() -> sutAndDoubles {
-        let databaseMock = CloudKitDatabaseMock()
+        let databaseMock = CloudKitDatabaseSpy()
         let client = CloudKitClient(database: databaseMock)
         let sut = SubtaskDAO(client: client)
 
