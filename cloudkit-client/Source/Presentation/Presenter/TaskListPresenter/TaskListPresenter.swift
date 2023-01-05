@@ -17,9 +17,7 @@ class TaskListPresenter: TaskListPresenting {
     
     func initState() {
         view?.showLoading()
-        DispatchQueue.main.async { [weak self] in
-            self?.listTaskUseCase.execute()
-        }
+        listTaskUseCase.execute()
     }
 }
 

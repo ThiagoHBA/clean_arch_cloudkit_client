@@ -47,6 +47,8 @@
 		009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */; };
 		009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */; };
 		009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC52963B32600E53CF0 /* ErrorExtension.swift */; };
+		009D1ECC296533EA00E53CF0 /* TaskMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ECB296533EA00E53CF0 /* TaskMapper.swift */; };
+		009D1ECF296535F600E53CF0 /* DomainEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC52963B32600E53CF0 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
+		009D1ECB296533EA00E53CF0 /* TaskMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapper.swift; sourceTree = "<group>"; };
+		009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEntityMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +300,7 @@
 		0063076E29596ECE0043E23A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				009D1EC9296533C900E53CF0 /* Mapper */,
 				009D1EBB2963925D00E53CF0 /* DataSource */,
 				00527D0E295C2F770048939C /* DAO */,
 				00630780295972E60043E23A /* Repository */,
@@ -510,6 +515,23 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		009D1EC9296533C900E53CF0 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				009D1ECD296535EB00E53CF0 /* Protocol */,
+				009D1ECB296533EA00E53CF0 /* TaskMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		009D1ECD296535EB00E53CF0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -642,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */,
+				009D1ECF296535F600E53CF0 /* DomainEntityMapper.swift in Sources */,
 				00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */,
 				009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */,
 				009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */,
@@ -664,6 +687,7 @@
 				00527D1A295C33900048939C /* SubtaskDAO.swift in Sources */,
 				00527CF229597B190048939C /* TaskRepository.swift in Sources */,
 				009CEB34295CF3900053EE18 /* AddTaskUseCase.swift in Sources */,
+				009D1ECC296533EA00E53CF0 /* TaskMapper.swift in Sources */,
 				009CEB38295CF4C50053EE18 /* AddSubtaskUseCase.swift in Sources */,
 				009CEB3C295CFB350053EE18 /* ListTasksUseCaseOutput.swift in Sources */,
 				006307852959738D0043E23A /* CloudKitClientProtocol.swift in Sources */,
