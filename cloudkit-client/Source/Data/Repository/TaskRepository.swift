@@ -30,8 +30,10 @@ class TaskRepository: TaskRepositoryProtocol {
                     if records.isEmpty { completion(.success([])) }
                     records.forEach { record in
                         strongSelf.mapper.mapToDomain(record) { task, error in
-                            if let error = error { completion(.failure(error)) }
-                            if let entity = task { taskList.append(entity) }
+                            if let entity = task {
+                                if error == nil { taskList.append(entity) }
+                                // entity & error
+                            }
                         }
                     }
                     completion(.success(taskList))
