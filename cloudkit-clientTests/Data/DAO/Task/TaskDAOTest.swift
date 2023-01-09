@@ -10,8 +10,9 @@ import CloudKit
 @testable import cloudkit_client
 
 final class TaskDAOTest: XCTestCase {
+    
     func test_fetchAll_whenSuccess_should_preserveRecordType() {
-        let expectation = XCTestExpectation(description: "DatabaseCalled")
+        let expectation = XCTestExpectation(description: "Database called with success")
         let (sut, (database, _)) = makeSUT()
         let expectedItem = CKRecord(recordType: "TaskItem")
         
@@ -37,6 +38,57 @@ final class TaskDAOTest: XCTestCase {
         successfullyCompleteQuery(database)
         XCTAssertEqual(database.fetchWithQueryCalled, 1)
     }
+    
+    func test_fetchAll_when_success_should_return_items_correctly() {
+        let (sut, (database, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called with success")
+        sut.fetchAll { result in
+            switch result {
+            case .success(let recordList):
+                XCTAssertTrue(!recordList.isEmpty)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail("Unexpected error raised: \(error.localizedDescription)")
+            }
+        }
+        successfullyCompleteQuery(database)
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_fetchAll_when_error_should_complete_correctly() {
+        let (sut, (database, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called with error")
+        
+        sut.fetchAll { result in
+            switch result {
+            case .success(_):
+                XCTFail("The test should raise error not success")
+            case .failure(_):
+                expectation.fulfill()
+            }
+        }
+        
+        withFailureCompleteQuery(database)
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_fetchAll_when_error_should_receive_a_ckerror() {
+        let (sut, (database, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called with error")
+        
+        sut.fetchAll { result in
+            switch result {
+            case .success(_):
+                XCTFail("The test should raise error not success")
+            case .failure(let error):
+                XCTAssertNotNil(error as? CKError)
+                expectation.fulfill()
+            }
+        }
+        
+        withFailureCompleteQuery(database)
+        wait(for: [expectation], timeout: 1)
+    }
 }
 
 extension TaskDAOTest {
@@ -49,6 +101,14 @@ extension TaskDAOTest {
                         , nil
                     )
                 )
+            )
+        )
+    }
+    
+    func withFailureCompleteQuery(_ database: CloudKitDatabaseSpy) {
+        XCTAssertNoThrow(
+            try database.completeFetchWithQuery(
+                result: .failure(CKError(CKError.Code(rawValue: 4)!))
             )
         )
     }

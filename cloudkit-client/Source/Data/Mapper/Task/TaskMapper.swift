@@ -17,7 +17,7 @@ struct DomainEntityMapperError: LocalizedError, CustomStringConvertible {
     }
 }
 
-struct TaskMapper: DomainEntityMapper {
+struct TaskMapper: TaskMapperProtocol {
     let client: CloudKitClientProtocol
     
     init(client: CloudKitClientProtocol) { self.client = client }
@@ -37,28 +37,20 @@ struct TaskMapper: DomainEntityMapper {
                 task.subtasks = subtaskList
                 if !failureSubtasks.isEmpty {
                     completion(
-                        task,
+                        nil,
                         DomainEntityMapperError(
-                            domainEntityErrorDescription: "O servidor encontrou um problema para recuperar alguns dados, algumas informações podem ter sido perdidas",
+                            domainEntityErrorDescription: "Ocorreu um erro no mapeamento dos dados do servidor!",
                             recoverySuggestion: "Verifique se existe uma atualização do aplicativo e tente novamente!"
                         )
                     )
+                    return
                 }
+                completion(task, nil)
             }
-            
-            completion(task, nil)
         }
-        
-        completion(
-            nil,
-            DomainEntityMapperError(
-                domainEntityErrorDescription: "Ocorreu um erro no mapeamento dos dados do servidor!",
-                recoverySuggestion: "Verifique se existe uma atualização do aplicativo e tente novamente!"
-            )
-        )
     }
     
-    private func fetchSubtasksReference(
+    func fetchSubtasksReference(
         _ references: [CKRecord.Reference],
         to task: Task,
         completion: @escaping ([Subtask], [(CKRecord.ID, Error)]) -> Void
@@ -66,23 +58,24 @@ struct TaskMapper: DomainEntityMapper {
         var subtasks: [Subtask] = [Subtask]()
         var failureSubtasks: [(CKRecord.ID, Error)] = [(CKRecord.ID, Error)]()
         
+        if references.isEmpty { completion([], []) }
         references.forEach { reference in
             client.fetchPerId(reference.recordID) { result in
                 switch result {
-                case .success(let record):
-                    let subtask = Subtask(
-                        done: (record["done"] as! Int64) == 1,
-                        name: record["name"] as! String,
-                        task: task
-                    )
-                    subtasks.append(subtask)
-                case .failure(let error):
-                    failureSubtasks.append((reference.recordID, error))
+                    case .success(let record):
+                        let subtask = Subtask(
+                            done: (record["done"] as! Int64) == 1,
+                            name: record["name"] as! String,
+                            task: task
+                        )
+                        subtasks.append(subtask)
+                    case .failure(let error):
+                        failureSubtasks.append((reference.recordID, error))
                 }
+                completion(subtasks, failureSubtasks)
             }
         }
         
-        completion(subtasks, failureSubtasks)
     }
    
 }

@@ -10,7 +10,4 @@ import CloudKit
 
 protocol TaskDAOProtocol {
     func fetchAll(completion: @escaping (Result<[CKRecord], Error>) -> Void)
-    func create()
-    func update()
-    func delete()
 }

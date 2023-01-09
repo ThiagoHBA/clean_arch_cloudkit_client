@@ -39,10 +39,4 @@ class TaskDAO: TaskDAOProtocol {
             }
         }
     }
-    
-    func create() {}
-    
-    func update() {}
-    
-    func delete() {}
 }

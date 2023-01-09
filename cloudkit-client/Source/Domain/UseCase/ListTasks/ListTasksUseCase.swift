@@ -1,17 +1,10 @@
-//
-//  ListTasksUseCase.swift
-//  cloudkit-client
-//
-//  Created by Thiago Henrique on 28/12/22.
-//
-
 import Foundation
 
-class ListTasksUseCase {
+class ListTasksUseCase: UseCase {
     var repository: TaskRepositoryProtocol
-    weak var output: ListTasksUseCaseOutput?
+    var output: ListTasksUseCaseOutput? // Retain Cicle
     
-    init(repository: TaskRepositoryProtocol) {
+    required init(repository: TaskRepositoryProtocol) {
         self.repository = repository
     }
      

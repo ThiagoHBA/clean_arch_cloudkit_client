@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol TaskListPresenting: AnyObject {
+protocol TaskListPresenting {
     func initState()
 }

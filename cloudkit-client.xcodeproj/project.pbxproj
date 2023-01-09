@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		00527CF229597B190048939C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527CF129597B190048939C /* TaskRepository.swift */; };
 		00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */; };
-		00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D15295C33410048939C /* SubtaskDAOProtocol.swift */; };
-		00527D1A295C33900048939C /* SubtaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D19295C33900048939C /* SubtaskDAO.swift */; };
 		0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072C29577F1E0043E23A /* AppDelegate.swift */; };
 		0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072E29577F1E0043E23A /* SceneDelegate.swift */; };
 		0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063073029577F1E0043E23A /* TaskListViewController.swift */; };
@@ -24,13 +22,17 @@
 		0063077C2959712A0043E23A /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063077B2959712A0043E23A /* Subtask.swift */; };
 		0063077F2959727F0043E23A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063077E2959727F0043E23A /* Constant.swift */; };
 		006307852959738D0043E23A /* CloudKitClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006307842959738D0043E23A /* CloudKitClientProtocol.swift */; };
+		00676CA5296A529300D2C128 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CA4296A529300D2C128 /* UseCase.swift */; };
+		00676CAA296A574200D2C128 /* ListTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CA9296A574200D2C128 /* ListTasksUseCase.swift */; };
+		00676CAD296A575D00D2C128 /* ListTasksUseCaseOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CAC296A575D00D2C128 /* ListTasksUseCaseOutput.swift */; };
+		00676CB3296BB12900D2C128 /* TaskMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CB2296BB12900D2C128 /* TaskMapperTest.swift */; };
+		00676CB9296C4E8500D2C128 /* ListTasksUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CB8296C4E8500D2C128 /* ListTasksUseCaseTest.swift */; };
+		00676CBC296C569F00D2C128 /* TaskRepositorySpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CBB296C569F00D2C128 /* TaskRepositorySpy.swift */; };
+		00676CBE296C56BB00D2C128 /* RepositoryErrorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CBD296C56BB00D2C128 /* RepositoryErrorStub.swift */; };
+		00676CC0296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */; };
+		00676CC7296C57A200D2C128 /* TaskListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */; };
+		00676CC9296C5A4800D2C128 /* TaskListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */; };
 		009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB2D295C37A80053EE18 /* TaskDAO.swift */; };
-		009CEB32295CF3560053EE18 /* ListTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */; };
-		009CEB34295CF3900053EE18 /* AddTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */; };
-		009CEB36295CF44A0053EE18 /* UpdateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */; };
-		009CEB38295CF4C50053EE18 /* AddSubtaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */; };
-		009CEB3A295CF4EA0053EE18 /* DeleteTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */; };
-		009CEB3C295CFB350053EE18 /* ListTasksUseCaseOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */; };
 		009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3E295D15250053EE18 /* TaskListPresenter.swift */; };
 		009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB41295D153B0053EE18 /* TaskListPresenting.swift */; };
 		009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB45295D15960053EE18 /* TaskListViewProtocol.swift */; };
@@ -38,17 +40,17 @@
 		009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */; };
 		009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */; };
 		009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E99295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift */; };
-		009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */; };
 		009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */; };
 		009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */; };
 		009D1EB12960698D00E53CF0 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB02960698D00E53CF0 /* Testing.swift */; };
 		009D1EB52962608300E53CF0 /* TaskDAOSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */; };
-		009D1EB72962608E00E53CF0 /* SubtaskDAOSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */; };
 		009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */; };
 		009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */; };
 		009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1EC52963B32600E53CF0 /* ErrorExtension.swift */; };
 		009D1ECC296533EA00E53CF0 /* TaskMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ECB296533EA00E53CF0 /* TaskMapper.swift */; };
 		009D1ECF296535F600E53CF0 /* DomainEntityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */; };
+		009D1ED32969C1EE00E53CF0 /* TaskMapperSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ED22969C1EE00E53CF0 /* TaskMapperSpy.swift */; };
+		009D1ED62969C47C00E53CF0 /* TaskMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1ED52969C47C00E53CF0 /* TaskMapperProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +73,6 @@
 /* Begin PBXFileReference section */
 		00527CF129597B190048939C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOProtocol.swift; sourceTree = "<group>"; };
-		00527D15295C33410048939C /* SubtaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOProtocol.swift; sourceTree = "<group>"; };
-		00527D19295C33900048939C /* SubtaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAO.swift; sourceTree = "<group>"; };
 		0063072929577F1E0043E23A /* cloudkit-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cloudkit-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0063072C29577F1E0043E23A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0063072E29577F1E0043E23A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,13 +91,17 @@
 		0063077B2959712A0043E23A /* Subtask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
 		0063077E2959727F0043E23A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		006307842959738D0043E23A /* CloudKitClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitClientProtocol.swift; sourceTree = "<group>"; };
+		00676CA4296A529300D2C128 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		00676CA9296A574200D2C128 /* ListTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCase.swift; sourceTree = "<group>"; };
+		00676CAC296A575D00D2C128 /* ListTasksUseCaseOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseOutput.swift; sourceTree = "<group>"; };
+		00676CB2296BB12900D2C128 /* TaskMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapperTest.swift; sourceTree = "<group>"; };
+		00676CB8296C4E8500D2C128 /* ListTasksUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseTest.swift; sourceTree = "<group>"; };
+		00676CBB296C569F00D2C128 /* TaskRepositorySpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositorySpy.swift; sourceTree = "<group>"; };
+		00676CBD296C56BB00D2C128 /* RepositoryErrorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryErrorStub.swift; sourceTree = "<group>"; };
+		00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseOutputSpy.swift; sourceTree = "<group>"; };
+		00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTest.swift; sourceTree = "<group>"; };
+		00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewSpy.swift; sourceTree = "<group>"; };
 		009CEB2D295C37A80053EE18 /* TaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAO.swift; sourceTree = "<group>"; };
-		009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCase.swift; sourceTree = "<group>"; };
-		009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskUseCase.swift; sourceTree = "<group>"; };
-		009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskUseCase.swift; sourceTree = "<group>"; };
-		009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubtaskUseCase.swift; sourceTree = "<group>"; };
-		009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskUseCase.swift; sourceTree = "<group>"; };
-		009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseOutput.swift; sourceTree = "<group>"; };
 		009CEB3E295D15250053EE18 /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
 		009CEB41295D153B0053EE18 /* TaskListPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenting.swift; sourceTree = "<group>"; };
 		009CEB45295D15960053EE18 /* TaskListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewProtocol.swift; sourceTree = "<group>"; };
@@ -105,17 +109,17 @@
 		009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListSwiftUi.swift; sourceTree = "<group>"; };
 		009D1E95295E833F00E53CF0 /* TaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOTest.swift; sourceTree = "<group>"; };
 		009D1E99295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseSpy.swift; sourceTree = "<group>"; };
-		009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOTest.swift; sourceTree = "<group>"; };
 		009D1EA5295E986800E53CF0 /* CKDatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDatabaseProtocol.swift; sourceTree = "<group>"; };
 		009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTest.swift; sourceTree = "<group>"; };
 		009D1EB02960698D00E53CF0 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOSpy.swift; sourceTree = "<group>"; };
-		009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskDAOSpy.swift; sourceTree = "<group>"; };
 		009D1EBE296392AD00E53CF0 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC1296392D500E53CF0 /* DataSourceErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceErrorHandler.swift; sourceTree = "<group>"; };
 		009D1EC52963B32600E53CF0 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		009D1ECB296533EA00E53CF0 /* TaskMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapper.swift; sourceTree = "<group>"; };
 		009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEntityMapper.swift; sourceTree = "<group>"; };
+		009D1ED22969C1EE00E53CF0 /* TaskMapperSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapperSpy.swift; sourceTree = "<group>"; };
+		009D1ED52969C47C00E53CF0 /* TaskMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapperProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +159,6 @@
 		00527D0E295C2F770048939C /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				00527D14295C32C70048939C /* Subtask */,
 				00527D0F295C2F8F0048939C /* Task */,
 			);
 			path = DAO;
@@ -168,15 +171,6 @@
 				009CEB2D295C37A80053EE18 /* TaskDAO.swift */,
 			);
 			path = Task;
-			sourceTree = "<group>";
-		};
-		00527D14295C32C70048939C /* Subtask */ = {
-			isa = PBXGroup;
-			children = (
-				00527D15295C33410048939C /* SubtaskDAOProtocol.swift */,
-				00527D19295C33900048939C /* SubtaskDAO.swift */,
-			);
-			path = Subtask;
 			sourceTree = "<group>";
 		};
 		0063072029577F1E0043E23A = {
@@ -214,6 +208,8 @@
 		0063074229577F1F0043E23A /* cloudkit-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				00676CC1296C572900D2C128 /* Presentation */,
+				00676CB4296C4E4200D2C128 /* Domain */,
 				009D1EAF2960697D00E53CF0 /* Protocol */,
 				009CEB51295E7DEC0053EE18 /* Data */,
 			);
@@ -250,8 +246,9 @@
 		0063075E29577F5B0043E23A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EC32963B2F800E53CF0 /* Common */,
 				00630767295827950043E23A /* Protocol */,
+				009D1EC32963B2F800E53CF0 /* Common */,
+				009D1EBB2963925D00E53CF0 /* Infrastructure */,
 				009CEB4A295D2D110053EE18 /* Main */,
 				0063076E29596ECE0043E23A /* Data */,
 				0063076D29596E630043E23A /* Domain */,
@@ -301,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				009D1EC9296533C900E53CF0 /* Mapper */,
-				009D1EBB2963925D00E53CF0 /* DataSource */,
 				00527D0E295C2F770048939C /* DAO */,
 				00630780295972E60043E23A /* Repository */,
 				0063077E2959727F0043E23A /* Constant.swift */,
@@ -312,7 +308,7 @@
 		0063077229596F910043E23A /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				009CEB3B295CFB340053EE18 /* ListTasksUseCaseOutput.swift */,
+				00676CA4296A529300D2C128 /* UseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -329,11 +325,7 @@
 		0063077429596FB50043E23A /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				009CEB31295CF3560053EE18 /* ListTasksUseCase.swift */,
-				009CEB33295CF3900053EE18 /* AddTaskUseCase.swift */,
-				009CEB35295CF44A0053EE18 /* UpdateTaskUseCase.swift */,
-				009CEB37295CF4C50053EE18 /* AddSubtaskUseCase.swift */,
-				009CEB39295CF4EA0053EE18 /* DeleteTaskUseCase.swift */,
+				00676CAB296A574F00D2C128 /* ListTasks */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -344,6 +336,91 @@
 				00527CF129597B190048939C /* TaskRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		00676CAB296A574F00D2C128 /* ListTasks */ = {
+			isa = PBXGroup;
+			children = (
+				00676CA9296A574200D2C128 /* ListTasksUseCase.swift */,
+				00676CAC296A575D00D2C128 /* ListTasksUseCaseOutput.swift */,
+			);
+			path = ListTasks;
+			sourceTree = "<group>";
+		};
+		00676CAE296BB0F300D2C128 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				00676CAF296BB10100D2C128 /* Task */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		00676CAF296BB10100D2C128 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				00676CB2296BB12900D2C128 /* TaskMapperTest.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		00676CB4296C4E4200D2C128 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				00676CB5296C4E6400D2C128 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		00676CB5296C4E6400D2C128 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				00676CBA296C4EB200D2C128 /* Doubles */,
+				00676CB8296C4E8500D2C128 /* ListTasksUseCaseTest.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		00676CBA296C4EB200D2C128 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				00676CBB296C569F00D2C128 /* TaskRepositorySpy.swift */,
+				00676CBD296C56BB00D2C128 /* RepositoryErrorStub.swift */,
+				00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		00676CC1296C572900D2C128 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				00676CCA296C63C700D2C128 /* UI */,
+				00676CC2296C574F00D2C128 /* Presenter */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		00676CC2296C574F00D2C128 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				00676CC3296C575B00D2C128 /* Doubles */,
+				00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		00676CC3296C575B00D2C128 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		00676CCA296C63C700D2C128 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		009CEB3D295D150F0053EE18 /* Presenter */ = {
@@ -390,8 +467,9 @@
 		009CEB51295E7DEC0053EE18 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EAC2960683700E53CF0 /* Repository */,
+				00676CAE296BB0F300D2C128 /* Mapper */,
 				009CEB52295E7E0F0053EE18 /* DAO */,
+				009D1EAC2960683700E53CF0 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -400,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				009D1E98295E85D700E53CF0 /* Doubles */,
-				009D1E9D295E934400E53CF0 /* Subtask */,
 				009CEB53295E7E1B0053EE18 /* Task */,
 			);
 			path = DAO;
@@ -422,17 +499,10 @@
 			path = Doubles;
 			sourceTree = "<group>";
 		};
-		009D1E9D295E934400E53CF0 /* Subtask */ = {
-			isa = PBXGroup;
-			children = (
-				009D1EA0295E936400E53CF0 /* SubtaskDAOTest.swift */,
-			);
-			path = Subtask;
-			sourceTree = "<group>";
-		};
 		009D1EAC2960683700E53CF0 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				009D1EB32962607100E53CF0 /* Doubles */,
 				009D1EB22962606500E53CF0 /* TaskRepository */,
 			);
 			path = Repository;
@@ -449,7 +519,6 @@
 		009D1EB22962606500E53CF0 /* TaskRepository */ = {
 			isa = PBXGroup;
 			children = (
-				009D1EB32962607100E53CF0 /* Doubles */,
 				009D1EAD2960684800E53CF0 /* TaskRepositoryTest.swift */,
 			);
 			path = TaskRepository;
@@ -459,18 +528,18 @@
 			isa = PBXGroup;
 			children = (
 				009D1EB42962608300E53CF0 /* TaskDAOSpy.swift */,
-				009D1EB62962608E00E53CF0 /* SubtaskDAOSpy.swift */,
+				009D1ED22969C1EE00E53CF0 /* TaskMapperSpy.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
 		};
-		009D1EBB2963925D00E53CF0 /* DataSource */ = {
+		009D1EBB2963925D00E53CF0 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				009D1EC0296392C500E53CF0 /* Protocol */,
 				009D1EBC2963926D00E53CF0 /* CloudKit */,
 			);
-			path = DataSource;
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		009D1EBC2963926D00E53CF0 /* CloudKit */ = {
@@ -519,7 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				009D1ECD296535EB00E53CF0 /* Protocol */,
-				009D1ECB296533EA00E53CF0 /* TaskMapper.swift */,
+				009D1ED42969C47000E53CF0 /* Task */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -530,6 +599,15 @@
 				009D1ECE296535F600E53CF0 /* DomainEntityMapper.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		009D1ED42969C47000E53CF0 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				009D1ECB296533EA00E53CF0 /* TaskMapper.swift */,
+				009D1ED52969C47C00E53CF0 /* TaskMapperProtocol.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -665,7 +743,6 @@
 			files = (
 				009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */,
 				009D1ECF296535F600E53CF0 /* DomainEntityMapper.swift in Sources */,
-				00527D16295C33410048939C /* SubtaskDAOProtocol.swift in Sources */,
 				009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */,
 				009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */,
 				0063077A295970A00043E23A /* Task.swift in Sources */,
@@ -673,25 +750,22 @@
 				0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */,
 				009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */,
 				0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */,
-				009CEB32295CF3560053EE18 /* ListTasksUseCase.swift in Sources */,
 				009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */,
 				009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */,
-				009CEB3A295CF4EA0053EE18 /* DeleteTaskUseCase.swift in Sources */,
 				00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */,
 				0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */,
 				00630765295783560043E23A /* CloudKitClient.swift in Sources */,
 				0063077F2959727F0043E23A /* Constant.swift in Sources */,
+				00676CAD296A575D00D2C128 /* ListTasksUseCaseOutput.swift in Sources */,
 				009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */,
 				009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */,
 				009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */,
-				00527D1A295C33900048939C /* SubtaskDAO.swift in Sources */,
 				00527CF229597B190048939C /* TaskRepository.swift in Sources */,
-				009CEB34295CF3900053EE18 /* AddTaskUseCase.swift in Sources */,
 				009D1ECC296533EA00E53CF0 /* TaskMapper.swift in Sources */,
-				009CEB38295CF4C50053EE18 /* AddSubtaskUseCase.swift in Sources */,
-				009CEB3C295CFB350053EE18 /* ListTasksUseCaseOutput.swift in Sources */,
+				00676CA5296A529300D2C128 /* UseCase.swift in Sources */,
 				006307852959738D0043E23A /* CloudKitClientProtocol.swift in Sources */,
-				009CEB36295CF44A0053EE18 /* UpdateTaskUseCase.swift in Sources */,
+				00676CAA296A574200D2C128 /* ListTasksUseCase.swift in Sources */,
+				009D1ED62969C47C00E53CF0 /* TaskMapperProtocol.swift in Sources */,
 				00630769295827A70043E23A /* TaskRepositoryProtocol.swift in Sources */,
 				009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */,
 			);
@@ -701,13 +775,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00676CB9296C4E8500D2C128 /* ListTasksUseCaseTest.swift in Sources */,
 				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */,
-				009D1EB72962608E00E53CF0 /* SubtaskDAOSpy.swift in Sources */,
-				009D1EA1295E936400E53CF0 /* SubtaskDAOTest.swift in Sources */,
 				009D1EB12960698D00E53CF0 /* Testing.swift in Sources */,
 				009D1EB52962608300E53CF0 /* TaskDAOSpy.swift in Sources */,
+				00676CBE296C56BB00D2C128 /* RepositoryErrorStub.swift in Sources */,
+				00676CBC296C569F00D2C128 /* TaskRepositorySpy.swift in Sources */,
 				009D1EAE2960684800E53CF0 /* TaskRepositoryTest.swift in Sources */,
+				00676CC9296C5A4800D2C128 /* TaskListViewSpy.swift in Sources */,
+				009D1ED32969C1EE00E53CF0 /* TaskMapperSpy.swift in Sources */,
 				009D1E96295E833F00E53CF0 /* TaskDAOTest.swift in Sources */,
+				00676CC7296C57A200D2C128 /* TaskListPresenterTest.swift in Sources */,
+				00676CC0296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift in Sources */,
+				00676CB3296BB12900D2C128 /* TaskMapperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

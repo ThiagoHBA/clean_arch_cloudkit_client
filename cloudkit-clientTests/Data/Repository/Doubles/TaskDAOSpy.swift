@@ -17,12 +17,6 @@ class TaskDAOSpy: TaskDAOProtocol {
         fetchAllCalled += 1
         completion(fetchAllData!())
     }
-    
-    func create() {}
-    
-    func update() {}
-    
-    func delete() {}
 }
 
 
