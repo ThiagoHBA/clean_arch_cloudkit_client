@@ -43,56 +43,6 @@ final class TaskRepositoryTest: XCTestCase {
         XCTAssertEqual(mapper.mapToDomainCalled, 0)
     }
 
-//    func test_fetchAllTasks_when_value_should_map_correctly() {
-//        let (sut, (taskSpy, mapper)) = makeSUT()
-//
-//        let inputData = CKRecord(recordType: "TaskItem")
-//
-//        inputData.setValuesForKeys([ "isOpen": true, "name": "", "subtasks": [] ])
-//
-//        taskSpy.fetchAllData = { .success([ inputData ]) }
-//        mapper.mapToDomainData = {}
-//
-//        sut.fetchAllTasks { result in
-//            switch result {
-//            case .success(let tasklist):
-//                XCTAssertEqual(
-//                    tasklist.filter {
-//                        $0 == Task(isOpen: true, name: "", subtasks: [])
-//                }.count, 1)
-//            case .failure(let error):
-//                XCTFail("unexpected error raised by fetchAllTask function: \(error.localizedDescription)")
-//            }
-//        }
-//    }
-
-//    func test_fetchAllTasks_when_value_should_map_all_subtasks_correctly() {
-//        let (sut, (taskSpy, subtaskSpy)) = makeSUT()
-//        let inputData = CKRecord(recordType: "TaskItem")
-//        let subtaskRecord = CKRecord(recordType: "SubtaskItem")
-//
-//        inputData.setValuesForKeys([ "isOpen": true, "name": "" ])
-//        subtaskRecord.setValuesForKeys([ "done": false, "name": "", "task": CKRecord.Reference(record: inputData, action: .none) ])
-//        inputData.setValuesForKeys([ "subtasks": [ CKRecord.Reference(record: subtaskRecord, action: .none)] ])
-//
-//        taskSpy.fetchAllData = { .success([ inputData ]) }
-//        subtaskSpy.fetchSubtaskData = { .success(subtaskRecord) }
-//
-//        let expectedTask = Task(isOpen: true, name: "", subtasks: [])
-//        let expectedSubtask = Subtask(done: false, name: "", task: expectedTask)
-//
-//        sut.fetchAllTasks { result in
-//            switch result {
-//                case .success(let tasklist):
-//                    XCTAssertEqual(tasklist.filter {
-//                        $0.subtasks.contains(expectedSubtask)
-//                    }.count, 1)
-//                case .failure(let error):
-//                    XCTFail("unexpected error raised by fetchAllTask function: \(error.localizedDescription)")
-//            }
-//        }
-//    }
-//
     func test_fetchAllTasks_when_error_should_handle_correctly() {
         let (sut, (taskSpy, _)) = makeSUT()
         let networkFailureCode = CKError.Code(rawValue: 4)!
