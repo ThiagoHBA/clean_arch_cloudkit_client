@@ -23,7 +23,7 @@ struct TaskListViewControllerFactory {
         listTaskUseCase.output = presenter
         
         let vc = TaskListViewController(presenter: presenter)
-        presenter.view = vc
+        presenter.view = WeakReference(vc)
         
         return vc
     }
@@ -43,5 +43,35 @@ struct TaskListViewControllerFactory {
         presenter.view = vc 
         
         return UIHostingController (rootView: vc)
+    }
+}
+
+final class WeakReference<T: AnyObject> {
+    weak var object: T?
+    
+    init(_ object: T) {
+        self.object = object
+    }
+}
+
+extension WeakReference: TaskListViewProtocol where T: TaskListViewProtocol {
+    func displayTaskList(_ tasks: [Task]) {
+        assert(object != nil)
+        object!.displayTaskList(tasks)
+    }
+    
+    func displayError(title: String, message: String) {
+        assert(object != nil)
+        object!.displayError(title: title, message: message)
+    }
+    
+    func showLoading() {
+        assert(object != nil)
+        object!.showLoading()
+    }
+    
+    func hideLoading() {
+        assert(object != nil)
+        object!.hideLoading()
     }
 }
