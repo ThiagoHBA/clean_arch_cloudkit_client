@@ -40,7 +40,22 @@ extension TaskRepository: TaskRepositoryProtocol {
                     completion(.failure(self.errorHandler.handleError(error)))
             }
         }
-        
+    }
+    
+    func createTask(_ task: Task, completion: @escaping (Result<Task, Error>) -> Void) {
+        self.taskDAO.create(task) { result in
+            switch result {
+                case .success(let record):
+                    self.mapper.mapToDomain(record) { task, error in
+                        if let error = error {
+                            completion(.failure(error))
+                        }
+                        if let entity = task { completion(.success(entity)) }
+                    }
+                case .failure(let error):
+                    completion(.failure(self.errorHandler.handleError(error)))
+            }
+        }
     }
 }
 

@@ -9,10 +9,22 @@ import Foundation
 import CloudKit
 
 class CloudKitClient: CloudKitClientProtocol {
+    
     internal var database: CKDatabaseProtocol
     
     init(database: CKDatabaseProtocol = CKContainer(identifier: Constant.containerIdentifier).privateCloudDatabase) {
         self.database = database
+    }
+    
+    func createRecord(_ record: CKRecord, completion: @escaping (Result<CKRecord, Error>) -> Void) {
+        database.save(record) { record, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            if let entity = record {
+                completion(.success(entity))
+            }
+        }
     }
     
     func fetchData(query: CKQuery, completion: @escaping (Result<[(CKRecord.ID, Result<CKRecord, Error>)], Error>) -> Void) {

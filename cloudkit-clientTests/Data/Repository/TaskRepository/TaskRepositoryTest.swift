@@ -21,36 +21,36 @@ final class TaskRepositoryTest: XCTestCase {
         let (sut, (taskMock, mapper)) = makeSUT()
         taskMock.fetchAllData = { .success([]) }
         mapper.mapToDomainData = { return (nil, nil) }
-
-
+        
+        
         sut.fetchAllTasks { result in
             switch result {
-                case .success(let taskList):
-                    XCTAssertEqual([], taskList)
-                case .failure(_):
-                    XCTFail("List should be initialized with zero values")
+            case .success(let taskList):
+                XCTAssertEqual([], taskList)
+            case .failure(_):
+                XCTFail("List should be initialized with zero values")
             }
         }
     }
-
+    
     func test_fetchAllTasks_when_no_values_fetch_called_only_once() {
         let (sut, (taskSpy, mapper)) = makeSUT()
         taskSpy.fetchAllData = { .success([]) }
         mapper.mapToDomainData = { return (nil, nil) }
-
+        
         sut.fetchAllTasks { _ in }
         XCTAssertEqual(taskSpy.fetchAllCalled, 1)
         XCTAssertEqual(mapper.mapToDomainCalled, 0)
     }
-
+    
     func test_fetchAllTasks_when_error_should_handle_correctly() {
         let (sut, (taskSpy, _)) = makeSUT()
         let networkFailureCode = CKError.Code(rawValue: 4)!
         let networkFailureDescription = "Não foi possível concluir a operação devido uma falha na comunicação da internet! Verifique sua conexão e tente novamente"
         let error = CKError(networkFailureCode)
-
+        
         taskSpy.fetchAllData = { .failure( error ) }
-
+        
         sut.fetchAllTasks { result in
             switch result {
             case .success(_):
@@ -60,7 +60,7 @@ final class TaskRepositoryTest: XCTestCase {
             }
         }
     }
-
+    
     func test_fetchAllTasks_when_error_should_no_call_fetch_subtasks() {
         let (sut, (taskSpy, mapperSpy)) = makeSUT()
         let networkFailureCode = CKError.Code(rawValue: 4)!
@@ -68,18 +68,18 @@ final class TaskRepositoryTest: XCTestCase {
         taskSpy.fetchAllData = { .failure( error ) }
         
         sut.fetchAllTasks { _ in }
-
+        
         XCTAssertEqual(mapperSpy.mapToDomainCalled, 0)
     }
-
+    
     func test_fetchAllTasks_when_fail_should_map_correctly_unkwown_errors() {
         let (sut, (taskSpy, _)) = makeSUT()
         let unknownErrorFailureCode = CKError.Code(rawValue: 0)! //
         let unknownErrorExpectedDescription = "Erro não mapeado! Verifique se existe alguma atualização do aplicativo disponível e tente novamente."
         let error = CKError(unknownErrorFailureCode)
-
+        
         taskSpy.fetchAllData = { .failure( error ) }
-
+        
         sut.fetchAllTasks { result in
             switch result {
             case .success(_):
@@ -100,11 +100,11 @@ final class TaskRepositoryTest: XCTestCase {
         
         sut.fetchAllTasks { result in
             switch result {
-                case .success(let recordList):
-                    XCTAssertNotNil(recordList.first)
-                    XCTAssertEqual(recordList.first!, Task(isOpen: false, name: "", subtasks: []))
-                case .failure(let error):
-                    XCTFail("Operation should not return error: \(error)")
+            case .success(let recordList):
+                XCTAssertNotNil(recordList.first)
+                XCTAssertEqual(recordList.first!, Task(isOpen: false, name: "", subtasks: []))
+            case .failure(let error):
+                XCTFail("Operation should not return error: \(error)")
             }
         }
     }
@@ -119,10 +119,10 @@ final class TaskRepositoryTest: XCTestCase {
         
         sut.fetchAllTasks { result in
             switch result {
-                case .success(let recordList):
-                    XCTAssertEqual(recordList, [])
-                case .failure(let error):
-                    XCTFail("Operation should not return error: \(error)")
+            case .success(let recordList):
+                XCTAssertEqual(recordList, [])
+            case .failure(let error):
+                XCTFail("Operation should not return error: \(error)")
             }
         }
     }
@@ -138,10 +138,95 @@ final class TaskRepositoryTest: XCTestCase {
         
         sut.fetchAllTasks { result in
             switch result {
-                case .success(let recordList):
-                    XCTAssertEqual(recordList, [])
+            case .success(let recordList):
+                XCTAssertEqual(recordList, [])
+            case .failure(let error):
+                XCTFail("Operation should not return error: \(error)")
+            }
+        }
+    }
+    
+    func test_createTask_when_success_should_call_create_on_DAO() {
+        let (sut, (taskSpy, mapper)) = makeSUT()
+        taskSpy.createData = {.success(CKRecord(recordType: "TaskItem"))}
+        mapper.mapToDomainData = { return (nil, nil) }
+        
+        sut.createTask(Task(isOpen: false, name: "", subtasks: [])) { _ in }
+        
+        XCTAssertEqual(taskSpy.createCalled, 1)
+    }
+    
+    func test_createTask_when_success_should_call_map_on_mapper() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let expectedTask = Task(isOpen: false, name: "", subtasks: [])
+        taskSpy.createData = {.success(CKRecord(recordType: "TaskItem"))}
+        mapperSpy.mapToDomainData = { return (expectedTask, nil)}
+        
+        sut.createTask(expectedTask) { _ in }
+        
+        XCTAssertEqual(mapperSpy.mapToDomainCalled, 1)
+    }
+    
+    func test_createTask_when_success_should_return_inputed_task_correctly() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let expectedTask = Task(isOpen: false, name: "", subtasks: [])
+        taskSpy.createData = {.success(CKRecord(recordType: "TaskItem"))}
+        mapperSpy.mapToDomainData = { return (expectedTask, nil)}
+        
+        sut.createTask(expectedTask) { result in
+            switch result {
+                case .success(let task):
+                    XCTAssertEqual(task, expectedTask)
                 case .failure(let error):
-                    XCTFail("Operation should not return error: \(error)")
+                    XCTFail("function \(#function) should not raise error, but: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func test_createTask_when_error_should_not_call_mapper() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "", subtasks: [])
+        let inputError = CKError(CKError.Code(rawValue: 4)!)
+        taskSpy.createData = {.failure(inputError)}
+        mapperSpy.mapToDomainData = { return (nil, nil)}
+        
+        sut.createTask(inputTask) { _ in }
+        
+        XCTAssertEqual(mapperSpy.mapToDomainCalled, 0)
+    }
+    
+    func test_createTask_when_error_should_handle_correctly() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "", subtasks: [])
+        let inputError = CKError(CKError.Code(rawValue: 4)!)
+        let expectedErrorDescription = "Não foi possível concluir a operação devido uma falha na comunicação da internet! Verifique sua conexão e tente novamente"
+        
+        taskSpy.createData = {.failure(inputError)}
+        mapperSpy.mapToDomainData = { return (nil, nil)}
+        
+        sut.createTask(inputTask) { result in
+            switch result {
+                case .success(let task):
+                    XCTFail("function \(#function) should raise error, but return \(task)")
+                case .failure(let error):
+                    XCTAssertEqual(error.localizedDescription, expectedErrorDescription)
+            }
+        }
+    }
+    
+    func test_createTask_when_mapper_raise_error_handle_correctly() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "", subtasks: [])
+        
+        taskSpy.createData = {.success(CKRecord(recordType: "TaskItem"))}
+        mapperSpy.mapToDomainData = { return (nil, RepositoryErrorStub.mockedError)}
+        
+        sut.createTask(inputTask) { result in
+            switch result {
+                case .success(let task):
+                    XCTFail("function \(#function) should raise error, but return \(task)")
+                case .failure(let error):
+                    XCTAssertEqual(error.localizedDescription, "Localized description")
             }
         }
     }

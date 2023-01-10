@@ -39,4 +39,21 @@ class TaskDAO: TaskDAOProtocol {
             }
         }
     }
+    
+    func create(_ task: Task, completion: @escaping (Result<CKRecord, Error>) -> Void) {
+        let record = CKRecord(recordType: "TaskItem")
+        record.setValuesForKeys([
+            "name": task.name,
+            "isOpen": task.isOpen,
+            "subtasks": task.subtasks
+        ])
+        client.createRecord(record) { result in
+            switch result {
+            case .success(let record):
+                completion(.success(record))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

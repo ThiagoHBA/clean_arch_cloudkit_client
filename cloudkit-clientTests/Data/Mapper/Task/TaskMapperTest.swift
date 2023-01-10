@@ -163,20 +163,18 @@ final class TaskMapperTest: XCTestCase {
 
 extension TaskMapperTest {
     func successfullyCompleteQuery(_ database: CloudKitDatabaseSpy, successData: CKRecord) {
-        XCTAssertNoThrow(
-            try database.completeFetchWithId(
+        database.completeFetchWithId(
                 record: successData,
                 error: nil
-            )
         )
+        
     }
     
     func withFailureCompleteQuery(_ database: CloudKitDatabaseSpy) {
-        XCTAssertNoThrow(
-            try database.completeFetchWithId(
+         database.completeFetchWithId(
                 record: nil,
-                error: CKError(CKError.Code(rawValue: 4)!))
-        )
+                error: CKError(CKError.Code(rawValue: 4)!)
+         )
     }
 }
 
