@@ -16,19 +16,19 @@ class TaskListPresenter: TaskListPresenting {
     }
     
     func initState() {
-        view?.showLoading()
+        view?.showLoading() {}
         listTaskUseCase.execute()
     }
 }
 
 extension TaskListPresenter: ListTasksUseCaseOutput {
     func tasksAreFetched(tasks: [Task]) {
-        view?.hideLoading()
-        view?.displayTaskList(tasks)
+        view?.hideLoading() {}
+        view?.displayTaskList(tasks) {}
     }
     
     func errorWhileFetchingTasks(error: Error) {
-        view?.hideLoading()
-        view?.displayError(title: "Erro!", message: error.localizedDescription)
+        view?.hideLoading() {}
+        view?.displayError(title: "Erro!", message: error.localizedDescription) {}
     }
 }

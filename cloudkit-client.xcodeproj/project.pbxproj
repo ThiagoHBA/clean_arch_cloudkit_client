@@ -32,6 +32,7 @@
 		00676CC0296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */; };
 		00676CC7296C57A200D2C128 /* TaskListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */; };
 		00676CC9296C5A4800D2C128 /* TaskListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */; };
+		00676CCE296DDF8500D2C128 /* TaskListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CCD296DDF8500D2C128 /* TaskListViewControllerTest.swift */; };
 		009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB2D295C37A80053EE18 /* TaskDAO.swift */; };
 		009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3E295D15250053EE18 /* TaskListPresenter.swift */; };
 		009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB41295D153B0053EE18 /* TaskListPresenting.swift */; };
@@ -101,6 +102,7 @@
 		00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTasksUseCaseOutputSpy.swift; sourceTree = "<group>"; };
 		00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTest.swift; sourceTree = "<group>"; };
 		00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewSpy.swift; sourceTree = "<group>"; };
+		00676CCD296DDF8500D2C128 /* TaskListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewControllerTest.swift; sourceTree = "<group>"; };
 		009CEB2D295C37A80053EE18 /* TaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAO.swift; sourceTree = "<group>"; };
 		009CEB3E295D15250053EE18 /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
 		009CEB41295D153B0053EE18 /* TaskListPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenting.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 		00676CCA296C63C700D2C128 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				00676CCD296DDF8500D2C128 /* TaskListViewControllerTest.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 			files = (
 				00676CB9296C4E8500D2C128 /* ListTasksUseCaseTest.swift in Sources */,
 				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */,
+				00676CCE296DDF8500D2C128 /* TaskListViewControllerTest.swift in Sources */,
 				009D1EB12960698D00E53CF0 /* Testing.swift in Sources */,
 				009D1EB52962608300E53CF0 /* TaskDAOSpy.swift in Sources */,
 				00676CBE296C56BB00D2C128 /* RepositoryErrorStub.swift in Sources */,

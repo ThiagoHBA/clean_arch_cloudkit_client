@@ -55,23 +55,23 @@ final class WeakReference<T: AnyObject> {
 }
 
 extension WeakReference: TaskListViewProtocol where T: TaskListViewProtocol {
-    func displayTaskList(_ tasks: [Task]) {
+    func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {
         assert(object != nil)
-        object!.displayTaskList(tasks)
+        object!.displayTaskList(tasks, completion: completion)
     }
     
-    func displayError(title: String, message: String) {
+    func displayError(title: String, message: String, completion: @escaping () -> Void) {
         assert(object != nil)
-        object!.displayError(title: title, message: message)
+        object!.displayError(title: title, message: message, completion: completion)
     }
     
-    func showLoading() {
+    func showLoading(completion: @escaping () -> Void) {
         assert(object != nil)
-        object!.showLoading()
+        object!.showLoading(completion: completion)
     }
     
-    func hideLoading() {
+    func hideLoading(completion: @escaping () -> Void) {
         assert(object != nil)
-        object!.hideLoading()
+        object!.hideLoading(completion: completion)
     }
 }

@@ -28,23 +28,23 @@ struct TaskListSwiftUi: View {
 }
 
 extension TaskListSwiftUi: TaskListViewProtocol {
-    func showLoading() {
+    func showLoading(completion: @escaping () -> Void) {
         vm.label = "Start Loading"
     }
     
-    func hideLoading() {
+    func hideLoading(completion: @escaping () -> Void) {
         DispatchQueue.main.async {
             vm.label = "Finish Loading"
         }
     }
     
-    func displayTaskList(_ tasks: [Task]) {
+    func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {
         DispatchQueue.main.async { 
             vm.label = "Displaying tasks..."
         }
     }
     
-    func displayError(title: String, message: String) {
+    func displayError(title: String, message: String, completion: @escaping () -> Void) {
         DispatchQueue.main.async {
             vm.label = "Error: \(title) - \(message)"
         }

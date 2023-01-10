@@ -31,20 +31,24 @@ class TaskListViewSpy: TaskListViewProtocol {
     
     private(set) var receivedMessages: [Message] = [Message]()
     
-    func displayTaskList(_ tasks: [Task]) {
+    func displayTaskList(_ tasks: [cloudkit_client.Task], completion: @escaping () -> Void) {
         receivedMessages.append(.displayTaskList(tasks))
+        completion()
     }
     
-    func displayError(title: String, message: String) {
+    func displayError(title: String, message: String, completion: @escaping () -> Void) {
         receivedMessages.append(.displayError(title, message))
+        completion()
     }
     
-    func showLoading() {
+    func showLoading(completion: @escaping () -> Void) {
         receivedMessages.append(.showLoading)
+        completion()
     }
     
-    func hideLoading() {
+    func hideLoading(completion: @escaping () -> Void) {
         receivedMessages.append(.hideLoading)
+        completion()
     }
 }
 

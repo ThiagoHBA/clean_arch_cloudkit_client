@@ -9,6 +9,7 @@ import UIKit
 
 class TaskListViewController: UIViewController {
     let presenter: TaskListPresenting
+    private(set) var tasks: [Task] = [Task]()
     
     let label: UILabel =  {
         let label = UILabel()
@@ -37,25 +38,30 @@ class TaskListViewController: UIViewController {
 
 
 extension TaskListViewController: TaskListViewProtocol {
-    func showLoading() {
+    func showLoading(completion: @escaping () -> Void) {
         label.text = "Start Loading"
+        completion()
     }
     
-    func hideLoading() {
+    func hideLoading(completion: @escaping () -> Void) {
         DispatchQueue.main.async { [weak self] in
             self?.label.text = "Finish Loading"
+            completion()
         }
     }
     
-    func displayTaskList(_ tasks: [Task]) {
+    func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {
         DispatchQueue.main.async { [weak self] in
             self?.label.text = "Displaying tasks..."
+            self?.tasks = tasks
+            completion()
         }
     }
     
-    func displayError(title: String, message: String) {
+    func displayError(title: String, message: String, completion: @escaping () -> Void) {
         DispatchQueue.main.async { [weak self] in
             self?.label.text = "Error: \(title) - \(message)"
+            completion()
         }
     }
 }

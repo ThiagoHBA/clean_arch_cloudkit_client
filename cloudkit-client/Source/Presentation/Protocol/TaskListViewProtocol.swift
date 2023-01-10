@@ -8,8 +8,8 @@
 import Foundation
 
 protocol TaskListViewProtocol {
-    func displayTaskList(_ tasks: [Task])
-    func displayError(title: String, message: String)
-    func showLoading()
-    func hideLoading()
+    func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void)
+    func displayError(title: String, message: String, completion: @escaping () -> Void)
+    func showLoading(completion: @escaping () -> Void)
+    func hideLoading(completion: @escaping () -> Void)
 }
