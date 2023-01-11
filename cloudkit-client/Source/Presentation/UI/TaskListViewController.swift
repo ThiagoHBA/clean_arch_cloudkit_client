@@ -38,6 +38,10 @@ class TaskListViewController: UIViewController {
 
 
 extension TaskListViewController: TaskListViewProtocol {
+    func includeTask(_ task: Task, completion: @escaping () -> Void) {
+        
+    }
+    
     func showLoading(completion: @escaping () -> Void) {
         label.text = "Start Loading"
         completion()

@@ -9,9 +9,11 @@ import Foundation
 @testable import cloudkit_client
 
 class TaskListViewSpy: TaskListViewProtocol {
+    
     enum Message: Equatable, CustomStringConvertible {
         case displayTaskList([Task])
         case displayError(String, String)
+        case includeTask(Task)
         case showLoading
         case hideLoading
         
@@ -25,6 +27,9 @@ class TaskListViewSpy: TaskListViewProtocol {
                     return "Show loading called"
                 case .hideLoading:
                     return "Hide loading called"
+                case .includeTask(let task):
+                    return "Include task called with data: \(task)"
+                
             }
         }
     }
@@ -48,6 +53,11 @@ class TaskListViewSpy: TaskListViewProtocol {
     
     func hideLoading(completion: @escaping () -> Void) {
         receivedMessages.append(.hideLoading)
+        completion()
+    }
+    
+    func includeTask(_ task: Task, completion: @escaping () -> Void) {
+        receivedMessages.append(.includeTask(task))
         completion()
     }
 }

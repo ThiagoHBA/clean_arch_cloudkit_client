@@ -42,15 +42,37 @@ final class CreateTaskUseCaseTest: XCTestCase {
         XCTAssertEqual(outputSpy.receivedMessages, [.errorWhileCreatingTask(expectedError)] )
     }
     
+    func test_execute_if_task_valid_should_call_createTask_on_repository() {
+        let (sut, (repoSpy, _)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        repoSpy.findTaskData = { return nil }
+        repoSpy.createTaskData = {.success(inputTask)}
+        sut.input = inputTask
+        sut.execute()
+        XCTAssertEqual(repoSpy.createTaskCalled, 1)
+    }
+
+    
     func test_execute_when_success_should_call_output_correctly() {
         let (sut, (repoSpy, outputSpy)) = makeSUT()
         let inputTask = Task(isOpen: false, name: "name", subtasks: [])
         repoSpy.findTaskData = { return nil }
+        repoSpy.createTaskData = { .success(inputTask) }
         sut.input = inputTask
         sut.execute()
         XCTAssertEqual(outputSpy.receivedMessages, [.succesfullyCreateTask(inputTask)])
     }
-
+    
+    func test_execute_when_fail_should_call_output_correctly() {
+        let (sut, (repoSpy, outputSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        let inputedError = RepositoryErrorStub.mockedError
+        repoSpy.findTaskData = { return nil }
+        repoSpy.createTaskData = { .failure(inputedError) }
+        sut.input = inputTask
+        sut.execute()
+        XCTAssertEqual(outputSpy.receivedMessages, [.errorWhileCreatingTask(inputedError)])
+    }
 }
 
 extension CreateTaskUseCaseTest: Testing {

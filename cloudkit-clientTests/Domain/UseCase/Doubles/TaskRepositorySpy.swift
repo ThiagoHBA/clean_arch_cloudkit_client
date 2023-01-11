@@ -11,10 +11,12 @@ import Foundation
 class TaskRepositorySpy: TaskRepositoryProtocol {
     private(set) var fetchAllTasksCalled = 0
     private(set) var findTaskCalled = 0
+    private(set) var createTaskCalled = 0
     
     // MARK: - Completions
     var fetchAllTasksData: (() -> (Result<[Task], Error>))?
     var findTaskData: (() -> Task?)?
+    var createTaskData: (() -> (Result<Task, Error>))?
     
     // MARK: - Protocol Functions
     func fetchAllTasks(completion: @escaping (Result<[Task], Error>) -> Void) {
@@ -23,8 +25,10 @@ class TaskRepositorySpy: TaskRepositoryProtocol {
         completion(fetchAllTasksData!())
     }
     
-    func createTask(_ task: cloudkit_client.Task, completion: @escaping (Result<cloudkit_client.Task, Error>) -> Void) {
-        
+    func createTask(_ task: Task, completion: @escaping (Result<Task, Error>) -> Void) {
+        assert(createTaskData != nil)
+        createTaskCalled += 1
+        completion(createTaskData!())
     }
     
     func findTask(_ task: Task, completion: @escaping (Task?) -> Void) {

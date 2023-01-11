@@ -27,7 +27,14 @@ class CreateTaskUseCase: UseCase {
                 self?.output?.errorWhileCreatingTask(TaskNameAlreadyExistError())
                 return
             }
-            self?.output?.succesfullyCreateTask(inputTask)
+            self?.repository.createTask(inputTask, completion: { result in
+                switch result {
+                    case .success(let task):
+                        self?.output?.succesfullyCreateTask(task)
+                    case .failure(let error):
+                        self?.output?.errorWhileCreatingTask(error)
+                }
+            })
         }
     }
     

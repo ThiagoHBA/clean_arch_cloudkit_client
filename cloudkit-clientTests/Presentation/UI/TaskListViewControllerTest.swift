@@ -74,11 +74,15 @@ extension TaskListViewControllerTest: Testing {
     }
 }
 
-class TaskListPresenterSpy: TaskListPresenting {
+class TaskListPresenterSpy: TaskListPresenting {    
     private(set) var initStateCalled = 0
     var view: TaskListViewProtocol?
     
     func initState() {
         initStateCalled += 1
+    }
+
+    func createTask(_ task: Task) {
+        
     }
 }

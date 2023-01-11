@@ -12,4 +12,5 @@ protocol TaskListViewProtocol {
     func displayError(title: String, message: String, completion: @escaping () -> Void)
     func showLoading(completion: @escaping () -> Void)
     func hideLoading(completion: @escaping () -> Void)
+    func includeTask(_ task: Task, completion: @escaping () -> Void)
 }
