@@ -11,4 +11,5 @@ import CloudKit
 protocol TaskDAOProtocol {
     func fetchAll(completion: @escaping (Result<[CKRecord], Error>) -> Void)
     func create(_ task: Task, completion: @escaping (Result<CKRecord, Error>) -> Void)
+    func find(_ task: Task, completion: @escaping (CKRecord?) -> Void)
 }

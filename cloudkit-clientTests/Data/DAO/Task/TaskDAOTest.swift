@@ -159,6 +159,41 @@ final class TaskDAOTest: XCTestCase {
         withFailureCompleteCreateRecordQuery(databaseSpy)
         wait(for: [expectation], timeout: 1)
     }
+    
+    func test_find_when_success_should_call_database_query() {
+        let (sut, (databaseSpy, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called successfully")
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        sut.find(inputTask) { _ in expectation.fulfill() }
+        
+        successfullyCompleteQuery(databaseSpy)
+        wait(for: [expectation], timeout: 1)
+        XCTAssertEqual(databaseSpy.fetchWithQueryCalled, 1)
+    }
+    
+    func test_find_when_fail_should_return_nil() {
+        let (sut, (databaseSpy, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called successfully")
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        sut.find(inputTask) { task in
+            XCTAssertNil(task)
+            expectation.fulfill()
+        }
+        withFailureCompleteQuery(databaseSpy)
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_find_when_success_should_return_task() {
+        let (sut, (databaseSpy, _)) = makeSUT()
+        let expectation = XCTestExpectation(description: "Database called successfully")
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        sut.find(inputTask) { task in
+            XCTAssertNotNil(task)
+            expectation.fulfill()
+        }
+        successfullyCompleteQuery(databaseSpy)
+        wait(for: [expectation], timeout: 1)
+    }
 }
 
 extension TaskDAOTest {

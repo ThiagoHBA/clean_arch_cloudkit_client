@@ -12,10 +12,12 @@ import CloudKit
 class TaskDAOSpy: TaskDAOProtocol {
     private(set) var fetchAllCalled = 0
     private(set) var createCalled = 0
+    private(set) var findCalled = 0
     
     // MARK: - Completions
     var fetchAllData: (() -> (Result<[CKRecord], Error>))?
     var createData: (() -> (Result<CKRecord, Error>))?
+    var findData: (() -> CKRecord?)?
     
     // MARK: - Protocol Functions
     func fetchAll(completion: @escaping (Result<[CKRecord], Error>) -> Void) {
@@ -29,7 +31,12 @@ class TaskDAOSpy: TaskDAOProtocol {
         createCalled += 1
         completion(createData!())
     }
-    
+
+    func find(_ task: Task, completion: @escaping (CKRecord?) -> Void) {
+        assert(findData != nil)
+        findCalled += 1
+        completion(findData!())
+    } 
 }
 
 

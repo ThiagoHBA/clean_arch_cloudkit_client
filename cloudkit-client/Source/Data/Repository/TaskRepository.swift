@@ -57,5 +57,17 @@ extension TaskRepository: TaskRepositoryProtocol {
             }
         }
     }
+    
+    func findTask(_ task: Task, completion: @escaping (Task?) -> Void) {
+        self.taskDAO.find(task) { [weak self] record in
+            if let record = record {
+                self?.mapper.mapToDomain(record) { task, error in
+                    completion(task)
+                }
+                return
+            }
+            completion(nil)
+        }
+    }
 }
 

@@ -53,6 +53,24 @@ class CloudKitClient: CloudKitClientProtocol {
             }
         }
     }
+    
+    func findRecord(query: CKQuery, completion: @escaping (CKRecord?) -> Void) {
+        database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: CKQueryOperation.maximumResults) { result in
+            switch result {
+                case .success(let (matchResults, _ )):
+                    if !matchResults.isEmpty {
+                        switch matchResults.first!.1 {
+                            case .success(let record):
+                                completion(record)
+                            case .failure(_):
+                                completion(nil)
+                        }
+                    }
+                case .failure(_):
+                    completion(nil)
+            }
+        }
+    }
 }
 
 extension CKDatabase: CKDatabaseProtocol { }

@@ -230,6 +230,80 @@ final class TaskRepositoryTest: XCTestCase {
             }
         }
     }
+    
+    func test_findTask_when_called_should_call_DAO() {
+        let (sut, (taskSpy, _)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        taskSpy.findData = { return nil }
+        sut.findTask(inputTask) { _ in }
+        XCTAssertEqual(taskSpy.findCalled, 1)
+    }
+    
+    func test_findTask_when_DAO_return_record_should_call_mapper() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        let inputRecord = CKRecord(recordType: "TaskItem")
+        taskSpy.findData = { return  inputRecord}
+        mapperSpy.mapToDomainData = { return (inputTask, nil) }
+        sut.findTask(inputTask) { _ in }
+        XCTAssertEqual(mapperSpy.mapToDomainCalled, 1)
+    }
+    
+    func test_findTask_when_DAO_return_nil_record_should_not_call_mapper() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        taskSpy.findData = { return  nil}
+        sut.findTask(inputTask) { _ in }
+        XCTAssertEqual(mapperSpy.mapToDomainCalled, 0)
+    }
+    
+    func test_findTask_when_DAO_return_record_completion_should_be_called() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let expectation = XCTestExpectation(description: "completion called")
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        let inputRecord = CKRecord(recordType: "TaskItem")
+        
+        taskSpy.findData = { return  inputRecord}
+        mapperSpy.mapToDomainData = { return (inputTask, nil) }
+        
+        sut.findTask(inputTask) { _ in  expectation.fulfill() }
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_findTask_when_DAO_return_error_completion_should_be_called() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let expectation = XCTestExpectation(description: "completion called")
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        
+        taskSpy.findData = { return  nil }
+        mapperSpy.mapToDomainData = { return (nil, nil) }
+        
+        sut.findTask(inputTask) { _ in  expectation.fulfill() }
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_findTask_when_DAO_return_record_completion_should_return_mapped_task() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        let inputRecord = CKRecord(recordType: "TaskItem")
+        
+        taskSpy.findData = { return  inputRecord}
+        mapperSpy.mapToDomainData = { return (inputTask, nil) }
+        
+        sut.findTask(inputTask) { task in
+            XCTAssertEqual(task, inputTask)
+        }
+    }
+    
+    func test_findTask_when_DAO_return_error_completion_should_return_nil() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "name", subtasks: [])
+        
+        taskSpy.findData = { return  nil}
+        mapperSpy.mapToDomainData = { return (nil, nil) }
+        
+        sut.findTask(inputTask) { task in XCTAssertNil(task) }
+    }
 }
 
 
