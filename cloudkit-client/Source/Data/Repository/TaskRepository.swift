@@ -29,13 +29,15 @@ extension TaskRepository: TaskRepositoryProtocol {
                     if records.isEmpty { completion(.success([])) }
                     records.forEach { record in
                         self.mapper.mapToDomain(record) { task, error in
+                            if let error = error { completion(.failure(error)) }
                             if let entity = task {
-                                if error == nil { taskList.append(entity) }
-                                // entity & error
+                                taskList.append(entity)
+                                if taskList.count == records.count {
+                                    completion(.success(taskList))
+                                }
                             }
                         }
                     }
-                    completion(.success(taskList))
                 case .failure(let error):
                     completion(.failure(self.errorHandler.handleError(error)))
             }

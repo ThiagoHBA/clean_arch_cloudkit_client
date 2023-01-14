@@ -66,6 +66,7 @@ class CloudKitClient: CloudKitClientProtocol {
                                 completion(nil)
                         }
                     }
+                    completion(nil)
                 case .failure(_):
                     completion(nil)
             }

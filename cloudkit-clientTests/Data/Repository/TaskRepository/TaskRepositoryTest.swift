@@ -90,6 +90,29 @@ final class TaskRepositoryTest: XCTestCase {
         }
     }
     
+    func test_fetchAllTask_when_multiple_tasks_completion_should_wait_mapper_to_complete() {
+        let (sut, (taskSpy, mapperSpy)) = makeSUT()
+        let expectedTask = Task(isOpen: false, name: "", subtasks: [])
+        taskSpy.fetchAllData = {
+            .success([
+                CKRecord.init(recordType: "TaskItem"),
+                CKRecord.init(recordType: "TaskItem"),
+                CKRecord.init(recordType: "TaskItem"),
+                CKRecord.init(recordType: "TaskItem")
+            ])
+        }
+        mapperSpy.mapToDomainData = { (expectedTask, nil) }
+
+        sut.fetchAllTasks { result in
+            switch result {
+                case .success(let taskList):
+                    XCTAssertEqual(taskList.filter { $0 == expectedTask }.count, 4)
+                case .failure(let error):
+                    XCTFail("Should not raise error, but: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func test_fetchAllTasks_when_mapper_return_task_should_append_on_list() {
         let (sut, (taskSpy, mapperSpy)) = makeSUT()
         let expectedTask = Task(isOpen: false, name: "", subtasks: [])
@@ -109,7 +132,7 @@ final class TaskRepositoryTest: XCTestCase {
         }
     }
     
-    func test_fetchAllTasks_when_mapper_return_error_should_not_append_on_list() {
+    func test_fetchAllTasks_when_mapper_return_error_should_complete_error() {
         let (sut, (taskSpy, mapperSpy)) = makeSUT()
         
         taskSpy.fetchAllData = {
@@ -119,29 +142,10 @@ final class TaskRepositoryTest: XCTestCase {
         
         sut.fetchAllTasks { result in
             switch result {
-            case .success(let recordList):
-                XCTAssertEqual(recordList, [])
-            case .failure(let error):
-                XCTFail("Operation should not return error: \(error)")
-            }
-        }
-    }
-    
-    func test_fetchAllTasks_when_mapper_return_task_and_error_should_not_append_on_list() {
-        let (sut, (taskSpy, mapperSpy)) = makeSUT()
-        let expectedTask = Task(isOpen: false, name: "", subtasks: [])
-        
-        taskSpy.fetchAllData = {
-            .success([CKRecord.init(recordType: "TaskItem")])
-        }
-        mapperSpy.mapToDomainData = { (expectedTask, DomainEntityMapperError(domainEntityErrorDescription: "")) }
-        
-        sut.fetchAllTasks { result in
-            switch result {
-            case .success(let recordList):
-                XCTAssertEqual(recordList, [])
-            case .failure(let error):
-                XCTFail("Operation should not return error: \(error)")
+                case .success(let recordList):
+                    XCTFail("Operation should not complete with success, but: \(recordList)")
+                case .failure(_):
+                    break
             }
         }
     }
