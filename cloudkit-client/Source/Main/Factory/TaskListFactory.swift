@@ -25,7 +25,7 @@ struct TaskListViewControllerFactory {
             createTaskUseCase: createTaskUseCase
         )
         listTaskUseCase.output = presenter
-        
+        createTaskUseCase.output = presenter
         let vc = TaskListViewController(presenter: presenter)
         presenter.view = WeakReference(vc)
         
@@ -46,7 +46,7 @@ struct TaskListViewControllerFactory {
             createTaskUseCase: createTaskUseCase
         )
         listTaskUseCase.output = presenter
-        
+        createTaskUseCase.output = presenter
         let vc = TaskListSwiftUi(vm: ViewModel(presenter: presenter))
         presenter.view = vc 
         
@@ -64,7 +64,8 @@ final class WeakReference<T: AnyObject> {
 
 extension WeakReference: TaskListViewProtocol where T: TaskListViewProtocol {
     func includeTask(_ task: Task, completion: @escaping () -> Void) {
-        
+        assert(object != nil)
+        object?.includeTask(task, completion: completion)
     }
     
     func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {

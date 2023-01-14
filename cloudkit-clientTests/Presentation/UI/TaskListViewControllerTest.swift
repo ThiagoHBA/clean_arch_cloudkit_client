@@ -91,18 +91,18 @@ final class TaskListViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.tintColor, .systemBlue)
     }
     
-    func test_createTaskDialog_should_create_alert_with_textField() {
+    func test_showTextFieldAlert_should_create_alert_with_textField() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         XCTAssertNotNil(alertSpy.textFields)
         XCTAssertFalse(alertSpy.textFields!.isEmpty)
     }
     
-    func test_createTaskDialog_should_create_an_cancelAction() {
+    func test_showTextFieldAlert_should_create_an_cancelAction() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         XCTAssertEqual(
             alertSpy.actions.filter { action in
             action.title == "Cancelar" &&
@@ -110,10 +110,10 @@ final class TaskListViewControllerTest: XCTestCase {
         }.count, 1)
     }
     
-    func test_createTaskDialog_should_create_an_saveAction() {
+    func test_showTextFieldAlert_should_create_an_saveAction() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         XCTAssertEqual(
             alertSpy.actions.filter { action in
             action.title == "OK" &&
@@ -121,10 +121,10 @@ final class TaskListViewControllerTest: XCTestCase {
         }.count, 1)
     }
     
-    func test_createTaskDialog_saveAction_should_not_be_enabled_if_textfield_is_empty() {
+    func test_showTextFieldAlert_saveAction_should_not_be_enabled_if_textfield_is_empty() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         let saveAction = alertSpy.actions.filter { action in
             action.title == "OK" &&
             action.style == .default
@@ -133,10 +133,10 @@ final class TaskListViewControllerTest: XCTestCase {
         XCTAssertFalse(saveAction.isEnabled)
     }
     
-    func test_createTaskDialog_saveAction_should_enabled_if_textfield_is_not_empty() {
+    func test_showTextFieldAlert_saveAction_should_enabled_if_textfield_is_not_empty() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         
         let saveAction = alertSpy.actions.filter { action in
             action.title == "OK" &&
@@ -155,10 +155,10 @@ final class TaskListViewControllerTest: XCTestCase {
         XCTAssertTrue(saveAction.isEnabled)
     }
     
-    func test_createTaskDialog_saveAction_should_not_be_enabled_if_textfield_is_blank() {
+    func test_showTextFieldAlert_saveAction_should_not_be_enabled_if_textfield_is_blank() {
         let (sut, _) = makeSUT()
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        sut.createTaskDialog(alertSpy) { _ in }
+        sut.showTextFieldAlert(alertSpy) { _ in }
         
         let saveAction = alertSpy.actions.filter { action in
             action.title == "OK" &&
@@ -177,7 +177,7 @@ final class TaskListViewControllerTest: XCTestCase {
         XCTAssertFalse(saveAction.isEnabled)
     }
     
-    func test_createTaskDialog_alert_should_be_presented() {
+    func test_showTextFieldAlert_alert_should_be_presented() {
         let (sut, _) = makeSUT()
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = sut
@@ -186,7 +186,7 @@ final class TaskListViewControllerTest: XCTestCase {
         let expectation = XCTestExpectation(description: "Completion called")
         let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
-        sut.createTaskDialog(
+        sut.showTextFieldAlert(
             alertSpy,
             completion: {
                 XCTAssertTrue(sut.presentedViewController is UIAlertController)
@@ -197,12 +197,46 @@ final class TaskListViewControllerTest: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
     
+    func test_addButtonTapped_should_create_a_alert() {
+        let (sut, _) = makeSUT()
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        sut.addButtonTapped()
+        
+        let alert = sut.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alert)
+    }
+    
+    func test_addButtonTapped_should_create_a_textField_alert_with_correct_title() {
+        let (sut, _) = makeSUT()
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        sut.addButtonTapped()
+        
+        let alert = sut.presentedViewController as! UIAlertController
+        XCTAssertEqual(alert.title, "Adicionar taréfa")
+    }
+    
     func test_when_presenter_return_to_include_task_should_call_includeTask() {
         let (sut, presenterSpy) = makeSUT()
         let inputTask = Task(isOpen: false, name: "some", subtasks: [])
         presenterSpy.view?.includeTask(inputTask) {}
         XCTAssertTrue(sut.tasks.contains(inputTask))
     }
+    
+    func test_when_presenter_return_to_include_task_should_show_alert() {
+        let (sut, presenterSpy) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "some", subtasks: [])
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        
+        presenterSpy.view?.includeTask(inputTask) {}
+        XCTAssertTrue(sut.presentedViewController is UIAlertController)
+    }
+
 
 }
 

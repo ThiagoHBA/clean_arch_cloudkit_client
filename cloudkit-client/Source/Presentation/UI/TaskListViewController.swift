@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskListViewController: UIViewController {
+class TaskListViewController: UIViewController, AlertPresentable {
     let presenter: TaskListPresenting
     private(set) var tasks: [Task] = [Task]()
     
@@ -50,53 +50,16 @@ class TaskListViewController: UIViewController {
             message: "Digite o nome da taréfa a ser adicionada",
             preferredStyle: .alert
         )
-        createTaskDialog(alert) { [weak self] taskName in
+        
+        showTextFieldAlert(alert) { [weak self] text in
             self?.presenter.createTask(
                 Task(
                     isOpen: false,
-                    name: taskName,
+                    name: text,
                     subtasks: []
                 )
             )
         }
-    }
-    
-    func createTaskDialog (
-        _ alert: UIAlertController,
-        completion: (() -> Void)? = nil,
-        action: @escaping (String) -> Void
-    ) {
-        alert.addTextField { (textField) in
-            textField.placeholder = "Escreva aqui"
-        }
-        
-        alert.addAction(
-            UIAlertAction(
-                title: "Cancelar",
-                style: .cancel,
-                handler: nil
-            )
-        )
-
-        let saveAction = UIAlertAction (
-            title: "OK",
-            style: .default,
-            handler: { [weak alert] (_) in
-                action(alert?.textFields![0].text ?? "")
-            })
-        
-        alert.addAction(saveAction)
-        saveAction.isEnabled = false
-
-        NotificationCenter.default.addObserver (
-            forName: UITextField.textDidChangeNotification,
-            object: alert.textFields![0],
-            queue: OperationQueue.main
-        ) { (notification) in
-            saveAction.isEnabled = alert.textFields![0].text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
-        }
-
-        self.present(alert, animated: true, completion: completion)
     }
 }
 
@@ -104,6 +67,7 @@ class TaskListViewController: UIViewController {
 extension TaskListViewController: TaskListViewProtocol {
     func includeTask(_ task: Task, completion: @escaping () -> Void) {
         tasks.append(task)
+        showAlert(title: "Sucesso!", message: "Taréfa adicionada com sucesso!")
         completion()
     }
     

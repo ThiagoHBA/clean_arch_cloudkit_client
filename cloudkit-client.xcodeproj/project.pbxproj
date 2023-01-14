@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0042C74C2972E8D7006A95AB /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042C74B2972E8D7006A95AB /* AlertPresentable.swift */; };
 		00527CF229597B190048939C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527CF129597B190048939C /* TaskRepository.swift */; };
 		00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */; };
 		0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072C29577F1E0043E23A /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0042C74B2972E8D7006A95AB /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		00527CF129597B190048939C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOProtocol.swift; sourceTree = "<group>"; };
 		0063072929577F1E0043E23A /* cloudkit-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cloudkit-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0042C74D2972E940006A95AB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0042C74B2972E8D7006A95AB /* AlertPresentable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		00527CF02959798A0048939C /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +286,7 @@
 		0063075F2957831A0043E23A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0042C74D2972E940006A95AB /* Protocol */,
 				0063073029577F1E0043E23A /* TaskListViewController.swift */,
 				009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */,
 			);
@@ -810,6 +821,7 @@
 				0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */,
 				009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */,
 				0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */,
+				0042C74C2972E8D7006A95AB /* AlertPresentable.swift in Sources */,
 				009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */,
 				009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */,
 				00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */,
