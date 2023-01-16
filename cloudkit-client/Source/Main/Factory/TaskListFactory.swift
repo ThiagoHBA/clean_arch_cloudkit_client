@@ -19,9 +19,13 @@ struct TaskListViewControllerFactory {
         )
         
         let listTaskUseCase = ListTasksUseCase(repository: taskRepository)
-        let presenter = TaskListPresenter(listTaskUseCase: listTaskUseCase)
+        let createTaskUseCase = CreateTaskUseCase(repository: taskRepository)
+        let presenter = TaskListPresenter (
+            listTaskUseCase: listTaskUseCase,
+            createTaskUseCase: createTaskUseCase
+        )
         listTaskUseCase.output = presenter
-        
+        createTaskUseCase.output = presenter
         let vc = TaskListViewController(presenter: presenter)
         presenter.view = WeakReference(vc)
         
@@ -36,42 +40,16 @@ struct TaskListViewControllerFactory {
         )
         
         let listTaskUseCase = ListTasksUseCase(repository: taskRepository)
-        let presenter = TaskListPresenter(listTaskUseCase: listTaskUseCase)
+        let createTaskUseCase = CreateTaskUseCase(repository: taskRepository)
+        let presenter = TaskListPresenter (
+            listTaskUseCase: listTaskUseCase,
+            createTaskUseCase: createTaskUseCase
+        )
         listTaskUseCase.output = presenter
-        
+        createTaskUseCase.output = presenter
         let vc = TaskListSwiftUi(vm: ViewModel(presenter: presenter))
         presenter.view = vc 
         
         return UIHostingController (rootView: vc)
-    }
-}
-
-final class WeakReference<T: AnyObject> {
-    weak var object: T?
-    
-    init(_ object: T) {
-        self.object = object
-    }
-}
-
-extension WeakReference: TaskListViewProtocol where T: TaskListViewProtocol {
-    func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {
-        assert(object != nil)
-        object!.displayTaskList(tasks, completion: completion)
-    }
-    
-    func displayError(title: String, message: String, completion: @escaping () -> Void) {
-        assert(object != nil)
-        object!.displayError(title: title, message: message, completion: completion)
-    }
-    
-    func showLoading(completion: @escaping () -> Void) {
-        assert(object != nil)
-        object!.showLoading(completion: completion)
-    }
-    
-    func hideLoading(completion: @escaping () -> Void) {
-        assert(object != nil)
-        object!.hideLoading(completion: completion)
     }
 }

@@ -9,6 +9,10 @@ import XCTest
 @testable import cloudkit_client
 
 final class TaskListViewControllerTest: XCTestCase {
+    func test_init_with_coder() {
+        let sut = TaskListViewController(coder: NSCoder())
+        XCTAssertNil(sut)
+    }
     func test_viewDidLoad_should_call_initState() {
         let (sut, presenter) = makeSUT()
         sut.loadViewIfNeeded()
@@ -61,6 +65,179 @@ final class TaskListViewControllerTest: XCTestCase {
         })
         wait(for: [expectation], timeout: 1)
     }
+    
+    func test_navigationItem_should_not_be_nil() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut.navigationItem)
+    }
+    
+    func test_viewDidLoad_should_replace_addButton() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut.navigationItem.rightBarButtonItem)
+    }
+
+    
+    func test_viewDidLoad_should_create_addButton_with_title_add() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.title, "add")
+    }
+    
+    func test_viewDidLoad_should_change_color_correctly() {
+        let (sut, _) = makeSUT()
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.navigationItem.rightBarButtonItem?.tintColor, .systemBlue)
+    }
+    
+    func test_showTextFieldAlert_should_create_alert_with_textField() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        XCTAssertNotNil(alertSpy.textFields)
+        XCTAssertFalse(alertSpy.textFields!.isEmpty)
+    }
+    
+    func test_showTextFieldAlert_should_create_an_cancelAction() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        XCTAssertEqual(
+            alertSpy.actions.filter { action in
+            action.title == "Cancelar" &&
+            action.style == .cancel
+        }.count, 1)
+    }
+    
+    func test_showTextFieldAlert_should_create_an_saveAction() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        XCTAssertEqual(
+            alertSpy.actions.filter { action in
+            action.title == "OK" &&
+            action.style == .default
+        }.count, 1)
+    }
+    
+    func test_showTextFieldAlert_saveAction_should_not_be_enabled_if_textfield_is_empty() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        let saveAction = alertSpy.actions.filter { action in
+            action.title == "OK" &&
+            action.style == .default
+        }.first!
+        
+        XCTAssertFalse(saveAction.isEnabled)
+    }
+    
+    func test_showTextFieldAlert_saveAction_should_enabled_if_textfield_is_not_empty() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        
+        let saveAction = alertSpy.actions.filter { action in
+            action.title == "OK" &&
+            action.style == .default
+        }.first!
+        
+        let textField = alertSpy.textFields?.first!
+        textField?.text = "some"
+        NotificationCenter.default.post(
+            Notification(
+                name: UITextField.textDidChangeNotification,
+                object: alertSpy.textFields?.first!
+            )
+        )
+        
+        XCTAssertTrue(saveAction.isEnabled)
+    }
+    
+    func test_showTextFieldAlert_saveAction_should_not_be_enabled_if_textfield_is_blank() {
+        let (sut, _) = makeSUT()
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        sut.showTextFieldAlert(alertSpy) { _ in }
+        
+        let saveAction = alertSpy.actions.filter { action in
+            action.title == "OK" &&
+            action.style == .default
+        }.first!
+        
+        let textField = alertSpy.textFields?.first!
+        textField?.text = " "
+        NotificationCenter.default.post(
+            Notification(
+                name: UITextField.textDidChangeNotification,
+                object: alertSpy.textFields?.first!
+            )
+        )
+        
+        XCTAssertFalse(saveAction.isEnabled)
+    }
+    
+    func test_showTextFieldAlert_alert_should_be_presented() {
+        let (sut, _) = makeSUT()
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        
+        let expectation = XCTestExpectation(description: "Completion called")
+        let alertSpy = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        sut.showTextFieldAlert(
+            alertSpy,
+            completion: {
+                XCTAssertTrue(sut.presentedViewController is UIAlertController)
+                expectation.fulfill()
+            },
+            action: { _ in }
+        )
+        wait(for: [expectation], timeout: 1)
+    }
+    
+    func test_addButtonTapped_should_create_a_alert() {
+        let (sut, _) = makeSUT()
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        sut.addButtonTapped()
+        
+        let alert = sut.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alert)
+    }
+    
+    func test_addButtonTapped_should_create_a_textField_alert_with_correct_title() {
+        let (sut, _) = makeSUT()
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        sut.addButtonTapped()
+        
+        let alert = sut.presentedViewController as! UIAlertController
+        XCTAssertEqual(alert.title, "Adicionar taréfa")
+    }
+    
+    func test_when_presenter_return_to_include_task_should_call_includeTask() {
+        let (sut, presenterSpy) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "some", subtasks: [])
+        presenterSpy.view?.includeTask(inputTask) {}
+        XCTAssertTrue(sut.tasks.contains(inputTask))
+    }
+    
+    func test_when_presenter_return_to_include_task_should_show_alert() {
+        let (sut, presenterSpy) = makeSUT()
+        let inputTask = Task(isOpen: false, name: "some", subtasks: [])
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = sut
+        alertWindow.makeKeyAndVisible()
+        
+        presenterSpy.view?.includeTask(inputTask) {}
+        XCTAssertTrue(sut.presentedViewController is UIAlertController)
+    }
+
+
 }
 
 extension TaskListViewControllerTest: Testing {
@@ -74,11 +251,16 @@ extension TaskListViewControllerTest: Testing {
     }
 }
 
-class TaskListPresenterSpy: TaskListPresenting {
+class TaskListPresenterSpy: TaskListPresenting {    
     private(set) var initStateCalled = 0
+    private(set) var createTaskCalled = 0
     var view: TaskListViewProtocol?
     
     func initState() {
         initStateCalled += 1
+    }
+
+    func createTask(_ task: Task) {
+        createTaskCalled += 1
     }
 }

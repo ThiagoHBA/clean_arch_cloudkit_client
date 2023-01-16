@@ -9,4 +9,5 @@ import Foundation
 
 protocol TaskListPresenting {
     func initState()
+    func createTask(_ task: Task)
 }

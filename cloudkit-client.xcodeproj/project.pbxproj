@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0042C74C2972E8D7006A95AB /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042C74B2972E8D7006A95AB /* AlertPresentable.swift */; };
+		0042C7502972EFB2006A95AB /* WeakReferenceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */; };
 		00527CF229597B190048939C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527CF129597B190048939C /* TaskRepository.swift */; };
 		00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */; };
 		0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072C29577F1E0043E23A /* AppDelegate.swift */; };
@@ -33,6 +35,13 @@
 		00676CC7296C57A200D2C128 /* TaskListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */; };
 		00676CC9296C5A4800D2C128 /* TaskListViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */; };
 		00676CCE296DDF8500D2C128 /* TaskListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CCD296DDF8500D2C128 /* TaskListViewControllerTest.swift */; };
+		00676CD2296E2CCA00D2C128 /* CreateTaskUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CD1296E2CCA00D2C128 /* CreateTaskUseCaseTest.swift */; };
+		00676CD5296E2F7C00D2C128 /* CreateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CD4296E2F7C00D2C128 /* CreateTaskUseCase.swift */; };
+		00676CD7296E2FF500D2C128 /* CreateTaskUseCaseOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CD6296E2FF500D2C128 /* CreateTaskUseCaseOutput.swift */; };
+		00676CDF296E355D00D2C128 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CDE296E355D00D2C128 /* UseCaseError.swift */; };
+		00676CE1296E35DE00D2C128 /* EmptyTaskNameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CE0296E35DE00D2C128 /* EmptyTaskNameError.swift */; };
+		00676CE5296E38FB00D2C128 /* CreateTaskUseCaseOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CE4296E38FB00D2C128 /* CreateTaskUseCaseOutputSpy.swift */; };
+		00676CE7296E3C3600D2C128 /* TaskNameAlreadyExistError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00676CE6296E3C3600D2C128 /* TaskNameAlreadyExistError.swift */; };
 		009CEB2E295C37A80053EE18 /* TaskDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB2D295C37A80053EE18 /* TaskDAO.swift */; };
 		009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB3E295D15250053EE18 /* TaskListPresenter.swift */; };
 		009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CEB41295D153B0053EE18 /* TaskListPresenting.swift */; };
@@ -72,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0042C74B2972E8D7006A95AB /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakReferenceObject.swift; sourceTree = "<group>"; };
 		00527CF129597B190048939C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOProtocol.swift; sourceTree = "<group>"; };
 		0063072929577F1E0043E23A /* cloudkit-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cloudkit-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +114,13 @@
 		00676CC6296C57A200D2C128 /* TaskListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTest.swift; sourceTree = "<group>"; };
 		00676CC8296C5A4800D2C128 /* TaskListViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewSpy.swift; sourceTree = "<group>"; };
 		00676CCD296DDF8500D2C128 /* TaskListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewControllerTest.swift; sourceTree = "<group>"; };
+		00676CD1296E2CCA00D2C128 /* CreateTaskUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskUseCaseTest.swift; sourceTree = "<group>"; };
+		00676CD4296E2F7C00D2C128 /* CreateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskUseCase.swift; sourceTree = "<group>"; };
+		00676CD6296E2FF500D2C128 /* CreateTaskUseCaseOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskUseCaseOutput.swift; sourceTree = "<group>"; };
+		00676CDE296E355D00D2C128 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
+		00676CE0296E35DE00D2C128 /* EmptyTaskNameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTaskNameError.swift; sourceTree = "<group>"; };
+		00676CE4296E38FB00D2C128 /* CreateTaskUseCaseOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskUseCaseOutputSpy.swift; sourceTree = "<group>"; };
+		00676CE6296E3C3600D2C128 /* TaskNameAlreadyExistError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNameAlreadyExistError.swift; sourceTree = "<group>"; };
 		009CEB2D295C37A80053EE18 /* TaskDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAO.swift; sourceTree = "<group>"; };
 		009CEB3E295D15250053EE18 /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
 		009CEB41295D153B0053EE18 /* TaskListPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenting.swift; sourceTree = "<group>"; };
@@ -149,6 +167,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0042C74D2972E940006A95AB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0042C74B2972E8D7006A95AB /* AlertPresentable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0042C74E2972EFA8006A95AB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		00527CF02959798A0048939C /* Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,9 +244,9 @@
 		0063074229577F1F0043E23A /* cloudkit-clientTests */ = {
 			isa = PBXGroup;
 			children = (
+				009D1EAF2960697D00E53CF0 /* Protocol */,
 				00676CC1296C572900D2C128 /* Presentation */,
 				00676CB4296C4E4200D2C128 /* Domain */,
-				009D1EAF2960697D00E53CF0 /* Protocol */,
 				009CEB51295E7DEC0053EE18 /* Data */,
 			);
 			path = "cloudkit-clientTests";
@@ -262,6 +296,7 @@
 		0063075F2957831A0043E23A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0042C74D2972E940006A95AB /* Protocol */,
 				0063073029577F1E0043E23A /* TaskListViewController.swift */,
 				009CEB4F295D49190053EE18 /* TaskListSwiftUi.swift */,
 			);
@@ -311,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				00676CA4296A529300D2C128 /* UseCase.swift */,
+				00676CDE296E355D00D2C128 /* UseCaseError.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -327,6 +363,7 @@
 		0063077429596FB50043E23A /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				00676CD3296E2F4E00D2C128 /* CreateTask */,
 				00676CAB296A574F00D2C128 /* ListTasks */,
 			);
 			path = UseCase;
@@ -377,7 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				00676CBA296C4EB200D2C128 /* Doubles */,
-				00676CB8296C4E8500D2C128 /* ListTasksUseCaseTest.swift */,
+				00676CE3296E38E100D2C128 /* CreateTask */,
+				00676CE2296E38C000D2C128 /* ListTasks */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -387,7 +425,6 @@
 			children = (
 				00676CBB296C569F00D2C128 /* TaskRepositorySpy.swift */,
 				00676CBD296C56BB00D2C128 /* RepositoryErrorStub.swift */,
-				00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -426,6 +463,43 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		00676CD3296E2F4E00D2C128 /* CreateTask */ = {
+			isa = PBXGroup;
+			children = (
+				00676CDA296E350E00D2C128 /* Errors */,
+				00676CD4296E2F7C00D2C128 /* CreateTaskUseCase.swift */,
+				00676CD6296E2FF500D2C128 /* CreateTaskUseCaseOutput.swift */,
+			);
+			path = CreateTask;
+			sourceTree = "<group>";
+		};
+		00676CDA296E350E00D2C128 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				00676CE0296E35DE00D2C128 /* EmptyTaskNameError.swift */,
+				00676CE6296E3C3600D2C128 /* TaskNameAlreadyExistError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		00676CE2296E38C000D2C128 /* ListTasks */ = {
+			isa = PBXGroup;
+			children = (
+				00676CBF296C56E000D2C128 /* ListTasksUseCaseOutputSpy.swift */,
+				00676CB8296C4E8500D2C128 /* ListTasksUseCaseTest.swift */,
+			);
+			path = ListTasks;
+			sourceTree = "<group>";
+		};
+		00676CE3296E38E100D2C128 /* CreateTask */ = {
+			isa = PBXGroup;
+			children = (
+				00676CD1296E2CCA00D2C128 /* CreateTaskUseCaseTest.swift */,
+				00676CE4296E38FB00D2C128 /* CreateTaskUseCaseOutputSpy.swift */,
+			);
+			path = CreateTask;
+			sourceTree = "<group>";
+		};
 		009CEB3D295D150F0053EE18 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +536,7 @@
 		009CEB4B295D2D450053EE18 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				0042C74E2972EFA8006A95AB /* Util */,
 				009CEB4C295D2D500053EE18 /* TaskListFactory.swift */,
 			);
 			path = Factory;
@@ -744,25 +819,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00676CDF296E355D00D2C128 /* UseCaseError.swift in Sources */,
 				009D1EC62963B32600E53CF0 /* ErrorExtension.swift in Sources */,
 				009D1ECF296535F600E53CF0 /* DomainEntityMapper.swift in Sources */,
 				009CEB46295D15960053EE18 /* TaskListViewProtocol.swift in Sources */,
 				009CEB50295D49190053EE18 /* TaskListSwiftUi.swift in Sources */,
 				0063077A295970A00043E23A /* Task.swift in Sources */,
+				00676CD7296E2FF500D2C128 /* CreateTaskUseCaseOutput.swift in Sources */,
+				00676CE7296E3C3600D2C128 /* TaskNameAlreadyExistError.swift in Sources */,
 				0063077C2959712A0043E23A /* Subtask.swift in Sources */,
+				00676CD5296E2F7C00D2C128 /* CreateTaskUseCase.swift in Sources */,
 				0063073129577F1E0043E23A /* TaskListViewController.swift in Sources */,
 				009D1EBF296392AD00E53CF0 /* ErrorHandler.swift in Sources */,
 				0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */,
+				0042C74C2972E8D7006A95AB /* AlertPresentable.swift in Sources */,
 				009CEB42295D153B0053EE18 /* TaskListPresenting.swift in Sources */,
 				009D1EC2296392D500E53CF0 /* DataSourceErrorHandler.swift in Sources */,
 				00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */,
 				0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */,
 				00630765295783560043E23A /* CloudKitClient.swift in Sources */,
 				0063077F2959727F0043E23A /* Constant.swift in Sources */,
+				0042C7502972EFB2006A95AB /* WeakReferenceObject.swift in Sources */,
 				00676CAD296A575D00D2C128 /* ListTasksUseCaseOutput.swift in Sources */,
 				009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */,
 				009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */,
 				009D1EA6295E986800E53CF0 /* CKDatabaseProtocol.swift in Sources */,
+				00676CE1296E35DE00D2C128 /* EmptyTaskNameError.swift in Sources */,
 				00527CF229597B190048939C /* TaskRepository.swift in Sources */,
 				009D1ECC296533EA00E53CF0 /* TaskMapper.swift in Sources */,
 				00676CA5296A529300D2C128 /* UseCase.swift in Sources */,
@@ -778,7 +860,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00676CE5296E38FB00D2C128 /* CreateTaskUseCaseOutputSpy.swift in Sources */,
 				00676CB9296C4E8500D2C128 /* ListTasksUseCaseTest.swift in Sources */,
+				00676CD2296E2CCA00D2C128 /* CreateTaskUseCaseTest.swift in Sources */,
 				009D1E9A295E85EA00E53CF0 /* CloudKitDatabaseSpy.swift in Sources */,
 				00676CCE296DDF8500D2C128 /* TaskListViewControllerTest.swift in Sources */,
 				009D1EB12960698D00E53CF0 /* Testing.swift in Sources */,

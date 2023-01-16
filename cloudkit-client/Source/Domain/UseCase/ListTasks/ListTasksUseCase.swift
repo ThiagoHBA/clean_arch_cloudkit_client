@@ -2,7 +2,8 @@ import Foundation
 
 class ListTasksUseCase: UseCase {
     var repository: TaskRepositoryProtocol
-    var output: ListTasksUseCaseOutput? // Retain Cicle
+    var output: ListTasksUseCaseOutput?
+    var input: Any? = nil
     
     required init(repository: TaskRepositoryProtocol) {
         self.repository = repository

@@ -9,10 +9,22 @@ import Foundation
 import CloudKit
 
 class CloudKitClient: CloudKitClientProtocol {
+    
     internal var database: CKDatabaseProtocol
     
     init(database: CKDatabaseProtocol = CKContainer(identifier: Constant.containerIdentifier).privateCloudDatabase) {
         self.database = database
+    }
+    
+    func createRecord(_ record: CKRecord, completion: @escaping (Result<CKRecord, Error>) -> Void) {
+        database.save(record) { record, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            if let entity = record {
+                completion(.success(entity))
+            }
+        }
     }
     
     func fetchData(query: CKQuery, completion: @escaping (Result<[(CKRecord.ID, Result<CKRecord, Error>)], Error>) -> Void) {
@@ -38,6 +50,26 @@ class CloudKitClient: CloudKitClientProtocol {
             }
             if let record = record {
                 completion(.success(record))
+            }
+        }
+    }
+    
+    func findRecord(query: CKQuery, completion: @escaping (CKRecord?) -> Void) {
+        database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: CKQueryOperation.maximumResults) { result in
+            switch result {
+                case .success(let (matchResults, _ )):
+                    if !matchResults.isEmpty {
+                        switch matchResults.first!.1 {
+                            case .success(let record):
+                                completion(record)
+                            case .failure(_):
+                                completion(nil)
+                        }
+                        return
+                    }
+                    completion(nil)
+                case .failure(_):
+                    completion(nil)
             }
         }
     }

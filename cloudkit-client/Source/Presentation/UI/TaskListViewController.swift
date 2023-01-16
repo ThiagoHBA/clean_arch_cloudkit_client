@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskListViewController: UIViewController {
+class TaskListViewController: UIViewController, AlertPresentable {
     let presenter: TaskListPresenting
     private(set) var tasks: [Task] = [Task]()
     
@@ -18,26 +18,61 @@ class TaskListViewController: UIViewController {
         return label
     }()
     
+    lazy var addButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "add"
+        button.style = .plain
+        button.target = self
+        button.action = #selector(addButtonTapped)
+        return button
+    }()
+
     init(presenter: TaskListPresenting) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { nil }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(label)
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem?.tintColor = .systemBlue
         configureConstraints()
         presenter.initState()
+    }
+    
+    @objc func addButtonTapped() {
+        let alert = UIAlertController(
+            title: "Adicionar taréfa",
+            message: "Digite o nome da taréfa a ser adicionada",
+            preferredStyle: .alert
+        )
+        
+        showTextFieldAlert(alert) { [weak self] text in
+            self?.presenter.createTask(
+                Task(
+                    isOpen: false,
+                    name: text,
+                    subtasks: []
+                )
+            )
+        }
     }
 }
 
 
 extension TaskListViewController: TaskListViewProtocol {
+    func includeTask(_ task: Task, completion: @escaping () -> Void) {
+        DispatchQueue.main.async { [weak self] in
+            self?.tasks.append(task)
+            self?.showAlert(title: "Sucesso!", message: "Taréfa adicionada com sucesso!")
+            completion()
+        }
+    }
+    
     func showLoading(completion: @escaping () -> Void) {
         label.text = "Start Loading"
         completion()
@@ -53,6 +88,7 @@ extension TaskListViewController: TaskListViewProtocol {
     func displayTaskList(_ tasks: [Task], completion: @escaping () -> Void) {
         DispatchQueue.main.async { [weak self] in
             self?.label.text = "Displaying tasks..."
+            print(tasks)
             self?.tasks = tasks
             completion()
         }

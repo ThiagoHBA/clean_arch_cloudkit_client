@@ -9,6 +9,7 @@ import Foundation
 import CloudKit
 
 class TaskDAO: TaskDAOProtocol {
+    
     let client: CloudKitClientProtocol
     
     init(client: CloudKitClientProtocol) {
@@ -38,5 +39,29 @@ class TaskDAO: TaskDAOProtocol {
                     completion(.failure(error))
             }
         }
+    }
+    
+    func create(_ task: Task, completion: @escaping (Result<CKRecord, Error>) -> Void) {
+        let record = CKRecord(recordType: "TaskItem")
+        record.setValuesForKeys([
+            "name": task.name,
+            "isOpen": task.isOpen,
+            "subtasks": task.subtasks
+        ])
+        client.createRecord(record) { result in
+            switch result {
+            case .success(let record):
+                completion(.success(record))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func find(_ task: Task, completion: @escaping (CKRecord?) -> Void) {
+        let predicate = NSPredicate(format: "name==%@", task.name)
+        let query = CKQuery(recordType: "TaskItem", predicate: predicate)
+        query.sortDescriptors = [ NSSortDescriptor(key: "modificationDate", ascending: true)]
+        client.findRecord(query: query, completion: completion)
     }
 }

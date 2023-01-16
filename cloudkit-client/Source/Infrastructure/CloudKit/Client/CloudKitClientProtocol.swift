@@ -13,4 +13,6 @@ protocol CloudKitClientProtocol {
     
     func fetchData(query: CKQuery, completion: @escaping (Result<[(CKRecord.ID, Result<CKRecord, Error>)], Error>) -> Void)
     func fetchPerId(_ id: CKRecord.ID, completion: @escaping (Result<CKRecord, Error>) -> Void)
+    func createRecord(_ record: CKRecord, completion: @escaping (Result<CKRecord, Error>) -> Void)
+    func findRecord(query: CKQuery, completion: @escaping (CKRecord?) -> Void)
 }

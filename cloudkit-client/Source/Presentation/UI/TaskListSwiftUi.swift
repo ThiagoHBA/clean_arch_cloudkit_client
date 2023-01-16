@@ -28,6 +28,10 @@ struct TaskListSwiftUi: View {
 }
 
 extension TaskListSwiftUi: TaskListViewProtocol {
+    func includeTask(_ task: Task, completion: @escaping () -> Void) {
+        
+    }
+    
     func showLoading(completion: @escaping () -> Void) {
         vm.label = "Start Loading"
     }
