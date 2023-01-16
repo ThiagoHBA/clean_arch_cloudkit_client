@@ -1,7 +1,7 @@
 workspace "cloudkit-client.xcodeproj/project.xcworkspace"
 scheme "cloudkit-client"
 sdk "iphonesimulator"
-device "iPhone 11"
+device "iPhone 14"
 code_coverage true
 xcargs '-parallelizeTargets'
 prelaunch_simulator true
