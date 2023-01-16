@@ -29,6 +29,9 @@ jobs:
       - name: Install gems
         run: bundle install
 
+      - name: Install Xcodes
+        run: brew install robotsandpencils/made/xcodes
+
       - name: Swift Packages Cache
         uses: actions/cache@v2
         id: cache
