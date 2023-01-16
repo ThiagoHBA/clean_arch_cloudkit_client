@@ -221,20 +221,28 @@ final class TaskListViewControllerTest: XCTestCase {
     
     func test_when_presenter_return_to_include_task_should_call_includeTask() {
         let (sut, presenterSpy) = makeSUT()
+        let expectation = XCTestExpectation(description: "completion called")
         let inputTask = Task(isOpen: false, name: "some", subtasks: [])
-        presenterSpy.view?.includeTask(inputTask) {}
-        XCTAssertTrue(sut.tasks.contains(inputTask))
+        presenterSpy.view?.includeTask(inputTask) {
+            expectation.fulfill()
+            XCTAssertTrue(sut.tasks.contains(inputTask))
+        }
+        wait(for: [expectation], timeout: 1)
     }
     
     func test_when_presenter_return_to_include_task_should_show_alert() {
         let (sut, presenterSpy) = makeSUT()
         let inputTask = Task(isOpen: false, name: "some", subtasks: [])
+        let expectation = XCTestExpectation(description: "completion called")
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = sut
         alertWindow.makeKeyAndVisible()
         
-        presenterSpy.view?.includeTask(inputTask) {}
-        XCTAssertTrue(sut.presentedViewController is UIAlertController)
+        presenterSpy.view?.includeTask(inputTask) {
+            expectation.fulfill()
+            XCTAssertTrue(sut.presentedViewController is UIAlertController)
+        }
+        wait(for: [expectation], timeout: 1)
     }
 
 
