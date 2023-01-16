@@ -66,9 +66,11 @@ class TaskListViewController: UIViewController, AlertPresentable {
 
 extension TaskListViewController: TaskListViewProtocol {
     func includeTask(_ task: Task, completion: @escaping () -> Void) {
-        tasks.append(task)
-        showAlert(title: "Sucesso!", message: "Taréfa adicionada com sucesso!")
-        completion()
+        DispatchQueue.main.async { [weak self] in
+            self?.tasks.append(task)
+            self?.showAlert(title: "Sucesso!", message: "Taréfa adicionada com sucesso!")
+            completion()
+        }
     }
     
     func showLoading(completion: @escaping () -> Void) {

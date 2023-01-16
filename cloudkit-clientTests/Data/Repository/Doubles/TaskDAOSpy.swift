@@ -15,27 +15,24 @@ class TaskDAOSpy: TaskDAOProtocol {
     private(set) var findCalled = 0
     
     // MARK: - Completions
-    var fetchAllData: (() -> (Result<[CKRecord], Error>))?
-    var createData: (() -> (Result<CKRecord, Error>))?
-    var findData: (() -> CKRecord?)?
+    var fetchAllData: ((Result<[CKRecord], Error>) -> Void)?
+    var createData: ((Result<CKRecord, Error>) -> Void)?
+    var findData: ((CKRecord?) -> Void)?
     
     // MARK: - Protocol Functions
     func fetchAll(completion: @escaping (Result<[CKRecord], Error>) -> Void) {
-        assert(fetchAllData != nil)
         fetchAllCalled += 1
-        completion(fetchAllData!())
+        fetchAllData = completion
     }
     
     func create(_ task: Task, completion: @escaping (Result<CKRecord, Error>) -> Void) {
-        assert(createData != nil)
         createCalled += 1
-        completion(createData!())
+        createData = completion
     }
 
     func find(_ task: Task, completion: @escaping (CKRecord?) -> Void) {
-        assert(findData != nil)
         findCalled += 1
-        completion(findData!())
+        findData = completion
     } 
 }
 

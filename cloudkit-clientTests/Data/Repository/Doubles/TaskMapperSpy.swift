@@ -23,9 +23,7 @@ class TaskMapperSpy: TaskMapperProtocol {
         assert(mapToDomainData != nil)
         self.mapToDomainCalled += 1
         let completionData = mapToDomainData!()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(completionData.0, completionData.1)
-        }
+        completion(completionData.0, completionData.1)
     }
     
     func fetchSubtasksReference (

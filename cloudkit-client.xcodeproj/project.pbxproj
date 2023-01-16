@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0042C74C2972E8D7006A95AB /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042C74B2972E8D7006A95AB /* AlertPresentable.swift */; };
+		0042C7502972EFB2006A95AB /* WeakReferenceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */; };
 		00527CF229597B190048939C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527CF129597B190048939C /* TaskRepository.swift */; };
 		00527D11295C2F9A0048939C /* TaskDAOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */; };
 		0063072D29577F1E0043E23A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063072C29577F1E0043E23A /* AppDelegate.swift */; };
@@ -81,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		0042C74B2972E8D7006A95AB /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakReferenceObject.swift; sourceTree = "<group>"; };
 		00527CF129597B190048939C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		00527D10295C2F9A0048939C /* TaskDAOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDAOProtocol.swift; sourceTree = "<group>"; };
 		0063072929577F1E0043E23A /* cloudkit-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cloudkit-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,14 @@
 				0042C74B2972E8D7006A95AB /* AlertPresentable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0042C74E2972EFA8006A95AB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0042C74F2972EFB2006A95AB /* WeakReferenceObject.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		00527CF02959798A0048939C /* Client */ = {
@@ -526,6 +536,7 @@
 		009CEB4B295D2D450053EE18 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				0042C74E2972EFA8006A95AB /* Util */,
 				009CEB4C295D2D500053EE18 /* TaskListFactory.swift */,
 			);
 			path = Factory;
@@ -828,6 +839,7 @@
 				0063072F29577F1E0043E23A /* SceneDelegate.swift in Sources */,
 				00630765295783560043E23A /* CloudKitClient.swift in Sources */,
 				0063077F2959727F0043E23A /* Constant.swift in Sources */,
+				0042C7502972EFB2006A95AB /* WeakReferenceObject.swift in Sources */,
 				00676CAD296A575D00D2C128 /* ListTasksUseCaseOutput.swift in Sources */,
 				009CEB4D295D2D500053EE18 /* TaskListFactory.swift in Sources */,
 				009CEB3F295D15250053EE18 /* TaskListPresenter.swift in Sources */,
