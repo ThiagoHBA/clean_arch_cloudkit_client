@@ -167,4 +167,7 @@ Dependencies/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+Fastlane/report.xml
+Fastlane/test_output
+
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,macos,objective-c
