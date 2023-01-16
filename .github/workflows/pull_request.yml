@@ -47,8 +47,8 @@ jobs:
 
       - name: Run Tests (No Cache)
         if: steps.setup.outputs.cache-hit != 'true'
-        run: bundle exec fastlane unit_test
+        run: bundle exec fastlane tests
       
       - name: Run Tests (Cache)
         if: steps.setup.outputs.cache-hit == 'true'
-        run: bundle exec fastlane unit_test skip_package_dependencies_resolution:true
+        run: bundle exec fastlane tests skip_package_dependencies_resolution:true
