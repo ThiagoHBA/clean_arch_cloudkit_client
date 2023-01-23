@@ -52,3 +52,6 @@ jobs:
       - name: Run Tests (Cache)
         if: steps.setup.outputs.cache-hit == 'true'
         run: bundle exec fastlane tests skip_package_dependencies_resolution:true
+
+      - name: Codecov
+        uses: codecov/codecov-action@v3.1.1
