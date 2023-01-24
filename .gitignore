@@ -170,5 +170,6 @@ Dependencies/
 Fastlane/report.xml
 Fastlane/test_output
 xcov_output/
+testOutput/
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,macos,objective-c
