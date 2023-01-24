@@ -29,8 +29,8 @@ jobs:
       - name: Install gems
         run: bundle install
 
-      - name: Install xcov
-        run: gem install xcov
+      - name: Install slather
+        run: gem install slather
 
       - name: Swift Packages Cache
         uses: actions/cache@v2
@@ -60,7 +60,7 @@ jobs:
         uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./xcov_output/report.json
+          files: ./slather_output/xml_report.xml
           flags: unittests 
           name: codecov-umbrella 
           verbose: true
