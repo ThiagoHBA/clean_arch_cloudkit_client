@@ -9,5 +9,11 @@ platform :ios do
             scheme: "cloudkit-client-unittests",
             code_coverage: true
         )
+        xcov(
+            scheme: "cloudkit-client-unittests",
+            output_directory: "xcov_output",
+            html_report: false,
+            json_report: true,
+        )
     end
 end
