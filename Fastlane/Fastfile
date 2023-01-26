@@ -4,10 +4,16 @@ default_platform :ios
 platform :ios do
     desc 'Builds project and executes unit tests'
     lane :tests do
-        run_tests(
-            devices: ["iPhone 14 Pro"],
+        run_tests()
+        slather(
+            build_directory: "Build",
+            binary_basename: "cloudkit-client",
+            cobertura_xml: true,
             scheme: "cloudkit-client-unittests",
-            code_coverage: true
+            workspace: "cloudkit-client.xcodeproj/project.xcworkspace",
+            proj: "cloudkit-client.xcodeproj",
+            verbose: true,
+            output_directory: "./test_output/slather_output"
         )
     end
 end

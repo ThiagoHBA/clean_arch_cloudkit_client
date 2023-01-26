@@ -1,8 +1,8 @@
 workspace "cloudkit-client.xcodeproj/project.xcworkspace"
-scheme "cloudkit-client"
+scheme "cloudkit-client-unittests"
 sdk "iphonesimulator"
-device "iPhone 8 (16.1)"
+device "iPhone 14 Pro (16.1)"
 code_coverage true
 xcargs '-parallelizeTargets'
 prelaunch_simulator true
-derived_data_path "Build/"
+derived_data_path "./test_output/"
