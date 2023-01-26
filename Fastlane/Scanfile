@@ -5,4 +5,4 @@ device "iPhone 14 Pro (16.1)"
 code_coverage true
 xcargs '-parallelizeTargets'
 prelaunch_simulator true
-derived_data_path "./testOutput/"
+derived_data_path "./test_output/"

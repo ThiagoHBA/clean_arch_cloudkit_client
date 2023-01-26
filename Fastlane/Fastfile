@@ -6,15 +6,14 @@ platform :ios do
     lane :tests do
         run_tests()
         slather(
-            build_directory: "testOutput",
+            build_directory: "Build",
             binary_basename: "cloudkit-client",
-            binary_file: "Coverage.profdata",
             cobertura_xml: true,
             scheme: "cloudkit-client-unittests",
             workspace: "cloudkit-client.xcodeproj/project.xcworkspace",
             proj: "cloudkit-client.xcodeproj",
             verbose: true,
-            output_directory: "./testOutput/slather_output"
+            output_directory: "./test_output/slather_output"
         )
     end
 end
