@@ -60,7 +60,7 @@ jobs:
         uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./test_output/slater_output/covertura.xml
+          files: ../../test_output/slather_output/covertura.xml
           flags: unittests 
           name: codecov-umbrella 
           verbose: true
