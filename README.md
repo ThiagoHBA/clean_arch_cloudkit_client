@@ -38,4 +38,13 @@
 *  Swift
 *  UiKit
 
+## 👨🏼‍🔧 Autor
+---
 
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56696275?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Thiago Batista</b></sub></a>
+
+Hope this project could help you in your studies 👊
+
+[![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/thiago-batista-759aa01b7/)
