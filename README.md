@@ -39,7 +39,6 @@
 *  UiKit
 
 ## 👨🏼‍🔧 Autor
----
 
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56696275?v=4" width="100px;" alt=""/>
  <br />
